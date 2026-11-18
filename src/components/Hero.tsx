@@ -1,13 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import RotatingBadge from "./RotatingBadge";
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="snap-section grain relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line px-5 pb-20 pt-32 sm:px-10"
+      className="grain relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line px-5 pb-20 pt-32 sm:px-10"
     >
+      <div className="pointer-events-none absolute left-1/2 top-[18px] z-10 -translate-x-1/2 -translate-y-1/2 sm:top-[22px]">
+        <RotatingBadge size={300} />
+      </div>
+
       <div className="mx-auto flex max-w-6xl flex-col gap-10">
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-ink-soft">
           <span className="tick pl-3">&nbsp;Builder &amp; CS student</span>

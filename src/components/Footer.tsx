@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <section
       id="contact"
-      className="snap-section flex min-h-screen flex-col justify-between bg-ink px-5 py-16 text-cream sm:px-10"
+      className="flex min-h-screen flex-col justify-between bg-ink px-5 py-16 text-cream sm:px-10"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="flex flex-wrap items-center justify-between gap-y-3 border-b border-cream/15 pb-6 text-xs uppercase tracking-[0.2em] text-cream/50">

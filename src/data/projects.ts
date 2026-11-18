@@ -15,8 +15,7 @@ export const projects: Project[] = [
     id: "basecase",
     name: "BaseCase",
     tagline: "DSA, curated and tracked",
-    description:
-      "A full-stack platform curating 669 unique DSA problems across 26 topics from LeetCode and CodeChef — topic-wise roadmap, progress dashboard, and contest tracker.",
+    description: "669 DSA problems, 26 topics, one roadmap. Progress dashboard + contest tracker.",
     tags: ["Next.js", "Supabase", "TypeScript"],
     accent: "#2A4FD6",
     status: "live",
@@ -27,8 +26,7 @@ export const projects: Project[] = [
     id: "resumeforge",
     name: "ResumeForge AI",
     tagline: "Resume, scored and rewritten",
-    description:
-      "A two-prompt Gemini pipeline: score a resume against a job description, then rewrite only the bullets that are actually weak.",
+    description: "Scores your resume against a JD, then rewrites only the weak bullets.",
     tags: ["Streamlit", "Gemini API", "Python"],
     accent: "#C17A2E",
     status: "live",
@@ -39,8 +37,7 @@ export const projects: Project[] = [
     id: "criclens",
     name: "CricLens",
     tagline: "Cricket, broken into frames",
-    description:
-      "End-to-end video pipeline for cricket shot classification and technique scoring — YOLO11 + ByteTrack tracking, ViTPose extraction, a fine-tuned Timesformer (81.2% test accuracy), served via FastAPI with pose overlays and LLM coaching feedback.",
+    description: "Shot classification + technique scoring from raw video. 81.2% accuracy.",
     tags: ["PyTorch", "Timesformer", "ViTPose", "YOLO11", "FastAPI"],
     accent: "#2F5233",
     status: "in progress",
@@ -51,8 +48,7 @@ export const projects: Project[] = [
     id: "examen",
     name: "Examen",
     tagline: "RAG, for actually studying",
-    description:
-      "An AI study platform: a Study Agent that parses PDFs into structure-aware outlines and teaches section by section, plus a multi-agent Research Agent producing cited reports — reranked RAG with web-augmented fallback.",
+    description: "Parses your PDFs, teaches them back section by section, cites its sources.",
     tags: ["FastAPI", "LangGraph", "RAG", "ChromaDB", "MCP"],
     accent: "#6C4FD6",
     status: "in progress",
@@ -63,8 +59,7 @@ export const projects: Project[] = [
     id: "vayu",
     name: "Vayu",
     tagline: "Air quality, forecasted",
-    description:
-      "ML models (CatBoost, LightGBM, XGBoost, Random Forest) forecasting AQI from Google Earth Engine satellite and meteorological data — full pipeline from collection to visualization.",
+    description: "Satellite + weather data in, AQI forecast out. Four models, one pipeline.",
     tags: ["Python", "Scikit-learn", "CatBoost", "XGBoost"],
     accent: "#2F8FB5",
     status: "in progress",

@@ -2,14 +2,6 @@
 
 import { motion } from "framer-motion";
 
-const LINKS = [
-  { label: "Work", href: "#work" },
-  { label: "Experience", href: "#experience" },
-  { label: "CP", href: "#cp" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
-
 export default function Nav() {
   return (
     <motion.header
@@ -18,29 +10,15 @@ export default function Nav() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed inset-x-0 top-4 z-50 flex justify-center px-4"
     >
-      <nav className="flex w-full max-w-3xl items-center justify-between gap-4 rounded-full border border-line/80 bg-cream/90 px-3 py-2 shadow-[0_1px_0_rgba(21,19,15,0.04)] backdrop-blur">
-        <a
-          href="#top"
-          className="flex items-center gap-2 rounded-full bg-ink px-3 py-1.5 text-cream"
-        >
-          <span className="font-display text-xs font-extrabold leading-none tracking-tight">
-            SS
-          </span>
+      <nav className="flex items-center gap-4 rounded-full border border-line/80 bg-cream/90 py-2 pl-4 pr-2 shadow-[0_1px_0_rgba(21,19,15,0.04)] backdrop-blur">
+        <a href="#top" className="font-display text-sm font-extrabold tracking-tight text-ink">
+          Shikhar Srivastava
         </a>
-
-        <div className="hidden items-center gap-5 text-xs font-medium uppercase tracking-wide text-ink-soft sm:flex">
-          {LINKS.map((l) => (
-            <a key={l.href} href={l.href} className="transition hover:text-ink">
-              {l.label}
-            </a>
-          ))}
-        </div>
-
         <a
           href="#contact"
-          className="rounded-full bg-ink px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-cream transition hover:opacity-90"
+          className="rounded-full bg-ink px-5 py-2 text-xs font-bold uppercase tracking-wide text-cream transition hover:opacity-90"
         >
-          Let&rsquo;s talk
+          Contact
         </a>
       </nav>
     </motion.header>

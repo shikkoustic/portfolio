@@ -3,11 +3,17 @@
 import { motion } from "framer-motion";
 import { cpPlatforms, cpSummary } from "@/data/cp";
 
+const GRADIENTS: Record<string, string> = {
+  LeetCode: "radial-gradient(130% 110% at 20% 10%, #E08A3E 0%, #C17A2E55 32%, #0B0B0C 68%)",
+  CodeChef: "radial-gradient(130% 110% at 20% 10%, #8F6CE0 0%, #6C4FD655 32%, #0B0B0C 68%)",
+  Codeforces: "radial-gradient(130% 110% at 20% 10%, #4C8A54 0%, #2F523355 32%, #0B0B0C 68%)",
+};
+
 export default function CompetitiveProgramming() {
   return (
     <section
       id="cp"
-      className="snap-section flex min-h-screen flex-col justify-center border-b border-line bg-cream-2 px-5 py-20 sm:px-10"
+      className="flex min-h-screen flex-col justify-center border-b border-line bg-cream px-5 py-20 sm:px-10"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
@@ -20,8 +26,7 @@ export default function CompetitiveProgramming() {
             </h2>
           </div>
           <p className="max-w-xs text-sm text-ink-soft">
-            {cpSummary.totalContests} rated contests across three platforms,
-            building a habit of time-efficient problem solving.
+            {cpSummary.totalContests} rated contests, three platforms.
           </p>
         </div>
 
@@ -32,41 +37,32 @@ export default function CompetitiveProgramming() {
               href={p.href}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, rotate: i % 2 === 0 ? -2 : 2 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-2xl border border-line bg-cream p-7"
+              transition={{ duration: 0.55, delay: i * 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group relative overflow-hidden rounded-[28px] p-7 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)]"
+              style={{ background: GRADIENTS[p.name] }}
             >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full blur-3xl"
-                style={{ background: p.accent, opacity: 0.22 }}
-              />
               <div className="relative flex items-center justify-between">
                 <p className="font-display text-xl font-extrabold">{p.name}</p>
-                <span className="text-xs text-ink-soft">↗</span>
+                <span className="rounded-full bg-black/25 px-2 py-1 text-xs backdrop-blur-sm">
+                  ↗
+                </span>
               </div>
-              <p className="relative mt-0.5 text-xs text-ink-soft">
-                @{p.handle}
-              </p>
+              <p className="relative mt-0.5 text-xs text-cream/70">@{p.handle}</p>
 
-              <p
-                className="font-display relative mt-6 text-5xl font-black"
-                style={{ color: p.accent }}
-              >
+              <p className="font-display relative mt-7 text-6xl font-black">
                 {p.rating}
               </p>
-              <p className="relative text-xs uppercase tracking-wide text-ink-soft">
+              <p className="relative text-xs uppercase tracking-wide text-cream/80">
                 {p.ratingLabel} · {p.rank}
               </p>
 
-              <div className="relative mt-5 border-t border-line pt-4">
-                <p className="font-display text-2xl font-extrabold">
-                  {p.stat}
-                </p>
-                <p className="text-xs uppercase tracking-wide text-ink-soft">
+              <div className="relative mt-5 border-t border-cream/25 pt-4">
+                <p className="font-display text-2xl font-extrabold">{p.stat}</p>
+                <p className="text-xs uppercase tracking-wide text-cream/70">
                   {p.statLabel}
                 </p>
               </div>

@@ -8,7 +8,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="snap-section flex min-h-screen flex-col justify-center border-b border-line px-5 py-20 sm:px-10"
+      className="flex min-h-screen flex-col justify-center border-b border-line px-5 py-20 sm:px-10"
     >
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <motion.div
