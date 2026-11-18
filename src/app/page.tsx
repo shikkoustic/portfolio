@@ -1,10 +1,11 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import Work from "@/components/Work";
+import Experience from "@/components/Experience";
+import CompetitiveProgramming from "@/components/CompetitiveProgramming";
 import About from "@/components/About";
-import Direction from "@/components/Direction";
 import Stack from "@/components/Stack";
-import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -13,11 +14,12 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <Work />
+        <Experience />
+        <CompetitiveProgramming />
         <About />
-        <Direction />
         <Stack />
       </main>
-      <Contact />
+      <Footer />
     </>
   );
 }

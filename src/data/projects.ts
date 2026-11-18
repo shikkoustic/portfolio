@@ -6,6 +6,7 @@ export type Project = {
   tags: string[];
   accent: string;
   status: "live" | "in progress";
+  period: string;
   href: string;
 };
 
@@ -13,12 +14,13 @@ export const projects: Project[] = [
   {
     id: "basecase",
     name: "BaseCase",
-    tagline: "DSA Club, reworked",
+    tagline: "DSA, curated and tracked",
     description:
-      "A 669-problem structured DSA roadmap and tracker for the college DSA Club — built on Next.js and Supabase.",
+      "A full-stack platform curating 669 unique DSA problems across 26 topics from LeetCode and CodeChef — topic-wise roadmap, progress dashboard, and contest tracker.",
     tags: ["Next.js", "Supabase", "TypeScript"],
     accent: "#2A4FD6",
     status: "live",
+    period: "Oct 2026",
     href: "https://basecase-red.vercel.app",
   },
   {
@@ -30,6 +32,7 @@ export const projects: Project[] = [
     tags: ["Streamlit", "Gemini API", "Python"],
     accent: "#C17A2E",
     status: "live",
+    period: "Nov 2026",
     href: "https://resumeforge-ai-shikhar.streamlit.app",
   },
   {
@@ -37,21 +40,23 @@ export const projects: Project[] = [
     name: "CricLens",
     tagline: "Cricket, broken into frames",
     description:
-      "Computer-vision shot analysis for cricket — batter detection, YOLO pose tracking, shot classification, and technique scoring from raw video.",
-    tags: ["FastAPI", "YOLO", "OpenCV", "PyTorch"],
+      "End-to-end video pipeline for cricket shot classification and technique scoring — YOLO11 + ByteTrack tracking, ViTPose extraction, a fine-tuned Timesformer (81.2% test accuracy), served via FastAPI with pose overlays and LLM coaching feedback.",
+    tags: ["PyTorch", "Timesformer", "ViTPose", "YOLO11", "FastAPI"],
     accent: "#2F5233",
     status: "in progress",
+    period: "Sept – Nov 2026",
     href: "#",
   },
   {
-    id: "ai-assistant",
-    name: "AI Study Assistant",
+    id: "examen",
+    name: "Examen",
     tagline: "RAG, for actually studying",
     description:
-      "A retrieval-augmented study tool: ingest PDFs and YouTube lectures, then query them through a LangGraph agent with cited answers.",
-    tags: ["FastAPI", "LangGraph", "ChromaDB", "React"],
+      "An AI study platform: a Study Agent that parses PDFs into structure-aware outlines and teaches section by section, plus a multi-agent Research Agent producing cited reports — reranked RAG with web-augmented fallback.",
+    tags: ["FastAPI", "LangGraph", "RAG", "ChromaDB", "MCP"],
     accent: "#6C4FD6",
     status: "in progress",
+    period: "Jun – Jul 2026",
     href: "#",
   },
   {
@@ -59,10 +64,11 @@ export const projects: Project[] = [
     name: "Vayu",
     tagline: "Air quality, forecasted",
     description:
-      "Satellite-data AQI forecasting and dashboard for Delhi-region air quality, with a model behind every number.",
-    tags: ["Flask", "scikit-learn", "pandas"],
+      "ML models (CatBoost, LightGBM, XGBoost, Random Forest) forecasting AQI from Google Earth Engine satellite and meteorological data — full pipeline from collection to visualization.",
+    tags: ["Python", "Scikit-learn", "CatBoost", "XGBoost"],
     accent: "#2F8FB5",
     status: "in progress",
+    period: "Mar – May 2026",
     href: "#",
   },
 ];

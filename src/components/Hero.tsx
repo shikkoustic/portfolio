@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="grain relative overflow-hidden border-b border-line px-5 pb-20 pt-40 sm:px-10"
+      className="snap-section grain relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line px-5 pb-20 pt-32 sm:px-10"
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-10">
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-ink-soft">
