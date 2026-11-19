@@ -2,46 +2,51 @@
 
 import { motion } from "framer-motion";
 
-// Three samples of the same wave, each phase-shifted, so morphing between
-// them in a loop reads as continuous rolling water instead of a static
-// crest. No scroll listeners here at all — the only scroll-tied behaviour
-// is the entrance (`whileInView`), which Framer drives off an
-// IntersectionObserver, not a scroll event, so it costs nothing and never
-// fights Lenis's own rAF loop the way a `window.addEventListener("scroll")`
-// + setState did.
+// Hero sits in a `sticky top-0 h-screen` wrapper and Work sits right after it
+// in a second `sticky top-0` wrapper with a higher z-index — pure CSS. Hero
+// never moves: it just stays pinned at the top of the viewport. Work's box
+// starts off-screen below and rises up through normal scroll until it's
+// pinned too, at which point it fully covers Hero — exactly water washing
+// up over land, driven entirely by the browser's native sticky positioning.
+// No scroll listener, no React state, so it can't fight Lenis's rAF loop.
+//
+// This component is purely the crest: it sits flush with Work's own top
+// edge and pokes `CREST_HEIGHT` above it, so while Work's box is rising,
+// its wavy top edge is what's visible washing over Hero first, before the
+// flat section underneath catches up. The crest never stops rippling
+// (phase-shifted `d` frames looped on a timer) so it reads as live water,
+// not a static decal.
+const CREST_HEIGHT = 96;
+
 const WAVE_FRAMES = [
-  "M 0 38 Q 180 50, 360 44 Q 540 38, 720 28 Q 900 18, 1080 24 Q 1260 32, 1440 30 L 1440 142 L 0 142 Z",
-  "M 0 30 Q 180 20, 360 28 Q 540 40, 720 48 Q 900 44, 1080 32 Q 1260 22, 1440 28 L 1440 142 L 0 142 Z",
-  "M 0 44 Q 180 36, 360 22 Q 540 18, 720 26 Q 900 38, 1080 46 Q 1260 42, 1440 36 L 1440 142 L 0 142 Z",
+  "M0,36 C120,52 240,16 360,28 C480,40 600,10 720,22 C840,34 960,14 1080,26 C1200,38 1320,18 1440,30 L1440,96 L0,96 Z",
+  "M0,26 C120,14 240,46 360,34 C480,22 600,50 720,38 C840,26 960,46 1080,30 C1200,16 1320,42 1440,24 L1440,96 L0,96 Z",
+  "M0,42 C120,30 240,22 360,40 C480,46 600,20 720,30 C840,42 960,22 1080,36 C1200,46 1320,24 1440,38 L1440,96 L0,96 Z",
 ];
 
 export default function WaveTransition() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none relative z-10 h-[90px] w-full overflow-visible sm:h-[120px]"
+      className="pointer-events-none absolute inset-x-0 w-full overflow-visible"
+      style={{ top: -CREST_HEIGHT, height: CREST_HEIGHT }}
     >
-      <motion.svg
-        viewBox="0 0 1440 140"
+      <svg
+        viewBox={`0 0 1440 ${CREST_HEIGHT}`}
         preserveAspectRatio="none"
-        className="absolute inset-x-0 bottom-0 h-full w-full overflow-visible"
-        style={{ filter: "drop-shadow(0 -4px 10px rgba(0,0,0,0.10))" }}
-        initial={{ y: 36, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className="h-full w-full"
       >
         <motion.path
-          fill="#F3EFE6"
+          fill="var(--cream)"
           animate={{ d: WAVE_FRAMES }}
           transition={{
-            duration: 7,
+            duration: 6,
             repeat: Infinity,
             repeatType: "mirror",
             ease: "easeInOut",
           }}
         />
-      </motion.svg>
+      </svg>
     </div>
   );
 }

@@ -13,9 +13,13 @@ export default function Home() {
     <>
       <Nav />
       <main className="flex-1">
-        <Hero />
-        <WaveTransition />
-        <Work />
+        <div className="sticky top-0 z-0 h-screen overflow-hidden">
+          <Hero />
+        </div>
+        <div className="sticky top-0 z-10 min-h-screen bg-cream">
+          <WaveTransition />
+          <Work />
+        </div>
         <Experience />
         <CompetitiveProgramming />
         <About />
