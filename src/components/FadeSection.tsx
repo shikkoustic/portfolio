@@ -17,11 +17,17 @@ import WaveEdge from "./WaveEdge";
 // below the viewport as the user scrolls, and (being a higher z-index)
 // visually buries whatever is stuck beneath it as it arrives.
 //
-// The wave crest sits at the very top of the incoming section's content.
-// If it were just rendered there in plain flow, it would ride along as
-// part of the section's own box — and since the box never un-sticks, the
-// crest would stay frozen at the top of the screen forever once the
-// section lands, instead of passing through once and then being gone.
+// The wave crest sits at the very top of the incoming section, as an
+// absolutely positioned OVERLAY on top of the content — not a sibling
+// sharing flex space with it. A `transform: translateY` (the `y` motion
+// value below) only moves where something is PAINTED; it never gives back
+// the layout space that element reserves. Putting the crest in normal flow
+// alongside the content meant that even once it had visually translated
+// away, its 240px was still being subtracted from the content's height —
+// which is why the section kept rendering as a big blank gap on top with
+// everything crammed into the bottom half. Overlaying it means the content
+// always gets the section's full height, with the crest floating above it
+// only while it's actually passing through.
 //
 // Tracking a target element's own rect (even a non-sticky marker) turned
 // out not to extrapolate past "fully entered" the way plain page scrollY
@@ -65,15 +71,18 @@ export default function FadeSection({
   return (
     <>
       <div
-        className="sticky top-0 flex h-screen flex-col overflow-hidden"
+        className="sticky top-0 h-screen overflow-hidden"
         style={{ zIndex: z }}
       >
         {index > 0 && waveColor && (
-          <motion.div style={{ y: waveY }} className="shrink-0">
+          <motion.div
+            style={{ y: waveY }}
+            className="pointer-events-none absolute inset-x-0 top-0 z-10"
+          >
             <WaveEdge fill={waveColor} />
           </motion.div>
         )}
-        <div className="min-h-0 flex-1">{children}</div>
+        <div className="h-full">{children}</div>
       </div>
       {/* A plain, invisible spacer in normal flow - not sticky, not
           z-indexed, nothing to see. It exists purely to push the NEXT
