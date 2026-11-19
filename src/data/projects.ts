@@ -68,13 +68,13 @@ export const projects: Project[] = [
     id: "vayu",
     name: "Vayu",
     tagline: "Air quality, forecasted",
-    description: "Satellite + weather data in, AQI forecast out. Four models, one pipeline.",
+    description: "Satellite + weather data in, AQI forecast out. Five models, one pipeline.",
     longDescription:
-      "Satellite and weather data in, air-quality forecast out. Pulls Google Earth Engine satellite imagery and meteorological data, runs it through CatBoost, LightGBM, XGBoost and Random Forest models, and visualizes the forecast end to end — from raw data collection to a usable dashboard.",
-    tags: ["Python", "Scikit-learn", "CatBoost", "XGBoost"],
+      "Satellite and weather data in, air-quality forecast out. Pulls Google Earth Engine satellite imagery and meteorological data, runs it through a CatBoost, LightGBM, XGBoost, Random Forest and GRU ensemble across five Delhi regions, and visualizes the forecast end to end — from raw data collection to a usable dashboard, auto-refreshing every two hours.",
+    tags: ["Python", "Scikit-learn", "CatBoost", "XGBoost", "TensorFlow"],
     accent: "#2F8FB5",
-    status: "in progress",
+    status: "live",
     period: "Mar – May 2026",
-    href: "#",
+    href: "https://vayu-aqi-forecasting.onrender.com",
   },
 ];
