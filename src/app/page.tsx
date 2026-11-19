@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Nav />
       <main className="flex-1">
-        {/* Hero + wave-wash into Work — these two are intentionally pinned */}
+        {/* Hero + wave-wash into Work — intentionally pinned/sticky */}
         <FadeSection z={0} index={0}>
           <Hero />
         </FadeSection>
@@ -21,11 +21,13 @@ export default function Home() {
           <Work />
         </FadeSection>
 
-        {/* All remaining sections scroll normally — no pinning, no fade locks */}
-        <Experience />
-        <CompetitiveProgramming />
-        <About />
-        <Stack />
+        {/* Normal-scroll sections — z-20 so they slide over the sticky Work as you scroll down */}
+        <div className="relative" style={{ zIndex: 20 }}>
+          <Experience />
+          <CompetitiveProgramming />
+          <About />
+          <Stack />
+        </div>
       </main>
       <Footer />
     </>
