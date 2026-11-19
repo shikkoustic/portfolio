@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { accolades } from "@/data/accolades";
 import BasketballGame from "./BasketballGame";
 import { Highlight } from "./Highlight";
@@ -99,17 +100,23 @@ export default function About() {
           className="flex flex-col gap-6"
         >
           <div className="relative mx-auto aspect-[4/5] w-full max-w-xs -rotate-2 rounded-xl border border-cream/15 bg-cream/5 p-4 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-sm">
-            <div className="grain relative h-full w-full overflow-hidden rounded-lg bg-ink">
+            <div className="relative h-full w-full overflow-hidden rounded-lg bg-ink">
+              <Image
+                src="/shikhar.jpg"
+                alt="Shikhar Srivastava"
+                fill
+                sizes="(min-width: 640px) 320px, 80vw"
+                className="object-cover"
+                priority
+              />
               <div
-                className="absolute inset-0 opacity-90"
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "radial-gradient(circle at 30% 20%, #6C4FD6 0%, transparent 45%), radial-gradient(circle at 75% 70%, #2A4FD6 0%, transparent 50%), radial-gradient(circle at 50% 100%, #C17A2E 0%, transparent 55%)",
+                    "linear-gradient(to top, rgba(19,32,28,0.65) 0%, transparent 35%)",
                 }}
               />
-              <span className="font-display absolute bottom-4 left-4 text-5xl font-black text-cream">
-                SS
-              </span>
             </div>
             <span className="absolute -right-3 -top-3 rotate-6 rounded-full bg-cream px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink">
               est. 2024
