@@ -1,7 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import FadeSection from "@/components/FadeSection";
 import Work from "@/components/Work";
+import WaveEdge from "@/components/WaveEdge";
 import Experience from "@/components/Experience";
 import CompetitiveProgramming from "@/components/CompetitiveProgramming";
 import About from "@/components/About";
@@ -13,21 +13,36 @@ export default function Home() {
     <>
       <Nav />
       <main className="flex-1">
-        {/* Hero + wave-wash into Work — intentionally pinned/sticky */}
-        <FadeSection z={0} index={0}>
-          <Hero />
-        </FadeSection>
-        <FadeSection z={10} index={1} waveColor="#f3efe6">
-          <Work />
-        </FadeSection>
+        {/* ── HERO + WAVE WASH INTO WORK ── */}
+        <div className="relative">
+          {/* Pinned Hero */}
+          <div className="sticky top-0 h-screen w-full overflow-hidden z-0">
+            <Hero />
+          </div>
 
-        {/* Normal-scroll sections — z-20 so they slide over the sticky Work as you scroll down */}
-        <div className="relative" style={{ zIndex: 20 }}>
-          <Experience />
-          <CompetitiveProgramming />
-          <About />
-          <Stack />
+          {/* Runway spacer: allows wave to enter smoothly from below */}
+          <div aria-hidden className="h-[35vh] w-full pointer-events-none" />
+
+          {/* Incoming Work section */}
+          <div className="relative z-10 bg-cream">
+            {/* Animated Wave Crest Washing Over Hero */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute bottom-full left-0 right-0 w-full overflow-hidden select-none"
+              style={{ height: 240, marginBottom: -1 }}
+            >
+              <WaveEdge fill="#f3efe6" />
+            </div>
+
+            <Work />
+          </div>
         </div>
+
+        {/* ── NORMAL SMOOTH SCROLLING SECTIONS (1 section at a time on screen) ── */}
+        <Experience />
+        <CompetitiveProgramming />
+        <About />
+        <Stack />
       </main>
       <Footer />
     </>

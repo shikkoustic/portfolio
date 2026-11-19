@@ -64,7 +64,7 @@ export default function CompetitiveProgramming() {
   return (
     <section
       id="cp"
-      className="border-b border-line bg-cream px-5 py-20 sm:px-10"
+      className="relative flex min-h-screen flex-col justify-center border-b border-line bg-cream px-5 py-6 sm:px-10"
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* Section Header */}
@@ -358,7 +358,7 @@ export default function CompetitiveProgramming() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-14"
+          className="mt-5 sm:mt-6"
         >
           <GithubHeatmap />
         </motion.div>

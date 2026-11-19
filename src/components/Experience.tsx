@@ -12,7 +12,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative overflow-hidden px-5 py-20 sm:px-10"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line px-5 py-6 sm:px-10"
       style={{ background: "#1C1712" }}
     >
       <div

@@ -21,9 +21,9 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="flex h-full flex-col border-b border-line bg-cream px-5 py-6 sm:px-10 sm:py-8"
+      className="flex min-h-screen flex-col justify-center border-b border-line bg-cream px-5 py-6 sm:px-10 sm:py-8"
     >
-      <div className="mx-auto flex h-full w-full max-w-6xl flex-col">
+      <div className="mx-auto flex w-full max-w-6xl flex-col">
         <div className="mb-4 shrink-0 sm:mb-5">
           <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
             ( Selected work )
