@@ -92,13 +92,13 @@ export default function About() {
           className="flex flex-col items-center gap-3 lg:items-center"
         >
           {/* Photo */}
-          <div className="relative aspect-[4/5] w-[120px] -rotate-2 rounded-xl border border-cream/15 bg-cream/5 p-2 shadow-lg backdrop-blur-sm transition-transform duration-300 hover:rotate-0">
-            <div className="relative h-full w-full overflow-hidden rounded-lg bg-ink">
+          <div className="relative aspect-[4/5] w-[210px] sm:w-[230px] -rotate-2 rounded-2xl border border-cream/15 bg-cream/5 p-3 shadow-2xl backdrop-blur-sm transition-transform duration-300 hover:rotate-0">
+            <div className="relative h-full w-full overflow-hidden rounded-xl bg-ink">
               <Image
                 src="/shikhar.jpg"
                 alt="Shikhar Srivastava"
                 fill
-                sizes="120px"
+                sizes="(max-width: 640px) 210px, 230px"
                 className="object-cover"
               />
               <div
@@ -110,7 +110,7 @@ export default function About() {
                 }}
               />
             </div>
-            <span className="absolute -right-2.5 -top-2.5 rotate-6 rounded-full bg-cream px-2 py-0.5 text-[8px] font-bold uppercase tracking-wide text-ink shadow">
+            <span className="absolute -right-3 -top-3 rotate-6 rounded-full bg-cream px-3 py-1 text-[9px] font-bold uppercase tracking-wide text-ink shadow-md">
               est. 2024
             </span>
           </div>

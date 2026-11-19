@@ -39,7 +39,7 @@ export default function Work() {
           </span>
         </div>
 
-        <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 sm:grid-rows-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:[grid-auto-rows:270px]">
           {projects.map((p, i) => {
             const target = p.href.startsWith("http") ? "_blank" : undefined;
             return (
@@ -49,10 +49,10 @@ export default function Work() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="group [perspective:1400px]"
+                className="group min-h-[260px] sm:min-h-[270px] [perspective:1400px]"
               >
                 <div
-                  className="relative h-full w-full [transform-style:preserve-3d] transition-transform duration-[850ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] will-change-transform"
+                  className="relative h-full min-h-[260px] sm:min-h-[270px] w-full [transform-style:preserve-3d] transition-transform duration-[850ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] will-change-transform"
                   tabIndex={0}
                   style={{ transformOrigin: "center center" }}
                 >
