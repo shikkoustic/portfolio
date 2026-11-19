@@ -67,7 +67,7 @@ export default function Work() {
                 className={`${bySpan[p.id]} group [perspective:1400px]`}
               >
                 <div
-                  className="relative h-full min-h-[220px] w-full [transform-style:preserve-3d] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] will-change-transform"
+                  className="relative h-full min-h-[220px] w-full [transform-style:preserve-3d] transition-transform duration-[850ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] will-change-transform"
                   tabIndex={0}
                   style={{ transformOrigin: "center center" }}
                 >

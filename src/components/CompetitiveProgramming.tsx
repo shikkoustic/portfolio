@@ -119,13 +119,13 @@ export default function CompetitiveProgramming() {
                 transition={{ duration: 0.55, delay: i * 0.1 }}
                 className="relative min-h-[340px] [perspective:1400px]"
               >
-                {/* Smooth 3D rotating container - perfectly synchronized across all cards */}
+                {/* Smooth 3D rotating container - gradual, elegant flip */}
                 <motion.div
                   className="relative h-full min-h-[340px] w-full [transform-style:preserve-3d] will-change-transform"
                   animate={{ rotateY: isFlipped ? 180 : 0 }}
                   transition={{
-                    duration: 0.75,
-                    ease: [0.22, 1, 0.36, 1], // Silky smooth deceleration curve
+                    duration: 0.85,
+                    ease: [0.4, 0, 0.2, 1], // Gradual, physical ease-in-out curve
                   }}
                   tabIndex={0}
                   onFocus={() => setIsFlipped(true)}
