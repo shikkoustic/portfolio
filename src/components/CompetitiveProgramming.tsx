@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cpPlatforms, cpSummary, CPBadgeItem } from "@/data/cp";
+import GithubHeatmap from "./GithubHeatmap";
 
 // Front face: accent blooms top-left → near-black
 const FRONT_GRADIENTS: Record<string, string> = {
@@ -63,7 +64,7 @@ export default function CompetitiveProgramming() {
   return (
     <section
       id="cp"
-      className="flex h-full flex-col justify-center border-b border-line bg-cream px-5 py-6 sm:px-10"
+      className="border-b border-line bg-cream px-5 py-20 sm:px-10"
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* Section Header */}
@@ -350,6 +351,17 @@ export default function CompetitiveProgramming() {
             );
           })}
         </div>
+
+        {/* GitHub activity heatmap — same section, no extra screen needed */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-14"
+        >
+          <GithubHeatmap />
+        </motion.div>
       </div>
     </section>
   );

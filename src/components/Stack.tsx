@@ -19,7 +19,7 @@ const TOOLS = [
 export default function Stack() {
   const loop = [...TOOLS, ...TOOLS];
   return (
-    <section className="flex h-full flex-col items-center justify-center gap-6 border-b border-line bg-cream px-5">
+    <section className="flex flex-col items-center justify-center gap-6 border-b border-line bg-cream px-5 py-16">
       <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
         ( Tools I reach for )
       </span>
