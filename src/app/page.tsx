@@ -1,5 +1,7 @@
 import Nav from "@/components/Nav";
+import Hero from "@/components/Hero";
 import WaveTransition from "@/components/WaveTransition";
+import Work from "@/components/Work";
 import Experience from "@/components/Experience";
 import CompetitiveProgramming from "@/components/CompetitiveProgramming";
 import About from "@/components/About";
@@ -11,7 +13,9 @@ export default function Home() {
     <>
       <Nav />
       <main className="flex-1">
+        <Hero />
         <WaveTransition />
+        <Work />
         <Experience />
         <CompetitiveProgramming />
         <About />
