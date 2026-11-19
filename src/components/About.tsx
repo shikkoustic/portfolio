@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { accolades } from "@/data/accolades";
 import BasketballSwish from "./BasketballSwish";
+import { Highlight } from "./Highlight";
 
 export default function About() {
   return (
@@ -28,14 +29,23 @@ export default function About() {
             tools second.
           </h2>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-ink-soft sm:text-base">
-            B.Tech CSE at Bennett University (9.35 CGPA), currently interning
-            at Zyflow Automation on agentic AI systems. Outside of that I
-            mentor DS-Algo at CodeChef Bennett, and I&rsquo;d rather ship a
-            working, slightly rough prototype than talk about a perfect one.
+            Second-year CS at Bennett (<Highlight color="#2A4FD6">9.35 CGPA</Highlight>),
+            currently interning at <Highlight color="#2A4FD6">Zyflow</Highlight> on
+            agentic AI — teaching LLMs to actually finish a task, not just talk
+            about one. I also run the books for{" "}
+            <Highlight color="#C17A2E">CodeChef Bennett</Highlight> as Finance
+            Sub-Head, which is mostly spreadsheets and sponsor emails, not code.
           </p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-base">
-            Off-screen: state-level competitive basketball, still played
-            regularly — keep scrolling.
+            Most of what&rsquo;s below started as a hackathon problem
+            statement or a course project I refused to stop touching after
+            the deadline. If it says &ldquo;in progress,&rdquo; it probably
+            still is, right now.
+          </p>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-base">
+            Off-screen, I&rsquo;ve played competitive basketball at the{" "}
+            <Highlight color="#6C4FD6">state level</Highlight>. Keep
+            scrolling, there&rsquo;s a hoop below.
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">

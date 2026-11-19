@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { cpPlatforms, cpSummary } from "@/data/cp";
+import GithubHeatmap from "./GithubHeatmap";
 
 const GRADIENTS: Record<string, string> = {
   LeetCode: "radial-gradient(130% 110% at 20% 10%, #E08A3E 0%, #C17A2E55 32%, #0B0B0C 68%)",
@@ -13,7 +14,7 @@ export default function CompetitiveProgramming() {
   return (
     <section
       id="cp"
-      className="flex min-h-screen flex-col justify-center border-b border-line bg-cream px-5 py-20 sm:px-10"
+      className="border-b border-line bg-cream px-5 py-20 sm:px-10"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
@@ -68,6 +69,10 @@ export default function CompetitiveProgramming() {
               </div>
             </motion.a>
           ))}
+        </div>
+
+        <div className="mt-6">
+          <GithubHeatmap />
         </div>
       </div>
     </section>
