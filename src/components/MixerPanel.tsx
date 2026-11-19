@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { BPM, getFftLevels, isPlaying, pauseAudio, resumeAudio, startAudio } from "@/lib/audio";
+import { TRACK_LABEL, getFftLevels, isPlaying, pauseAudio, resumeAudio, startAudio } from "@/lib/audio";
 
 const BAR_COUNT = 28;
 // Skip the first couple of bins (sub-bass, barely ever moves on a pad loop)
@@ -93,10 +93,10 @@ export default function MixerPanel() {
 
       <div className="hidden shrink-0 flex-col items-end text-right sm:flex">
         <span className="text-[11px] font-bold uppercase tracking-wide text-cream">
-          Builder&rsquo;s loop
+          {TRACK_LABEL}
         </span>
         <span className="text-[10px] uppercase tracking-wide text-cream/50">
-          original · {BPM} bpm
+          now playing
         </span>
       </div>
     </div>
