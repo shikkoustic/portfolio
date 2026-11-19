@@ -1,36 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { projects } from "@/data/projects";
+import { projects as allProjects } from "@/data/projects";
 import { ProjectGlyph } from "./ProjectGlyph";
 
-// Explicit placement, not source-order auto-placement: the implicit grid put
-// Examen+Vayu under BaseCase in a new row (auto-placement never backtracks
-// into a column it already passed), leaving a gap under CricLens instead of
-// the symmetric two-column block that was actually wanted. Explicit
-// col-start/row-start removes the ambiguity entirely.
-//   Row 1-2, col 1-2: BaseCase (big square)
-//   Row 1,   col 3-4: CricLens
-//   Row 2,   col 3-4: Vayu — stretches full width, ends flush with CricLens
-//   Row 3,   col 1-2: ResumeForge
-//   Row 3,   col 3-4: Examen
-const bySpan: Record<string, string> = {
-  basecase: "sm:col-start-1 sm:col-span-2 sm:row-start-1 sm:row-span-2",
-  criclens: "sm:col-start-3 sm:col-span-2 sm:row-start-1 sm:row-span-1",
-  vayu: "sm:col-start-3 sm:col-span-2 sm:row-start-2 sm:row-span-1",
-  resumeforge: "sm:col-start-1 sm:col-span-2 sm:row-start-3 sm:row-span-1",
-  examen: "sm:col-start-3 sm:col-span-2 sm:row-start-3 sm:row-span-1",
-};
+// ResumeForge dropped from this grid - four projects in a plain, equal 2x2
+// is simpler and sturdier than five in an asymmetric layout (which kept
+// overflowing its own rows once the section's height budget got tighter).
+const projects = allProjects.filter((p) => p.id !== "resumeforge");
 
-// Every card except BaseCase (the only row-span-2 tile) has just 220px of
-// height to work with, so they all need the same compact vertical rhythm —
-// one-line description, a trimmed tag count — or the tags get crammed
-// against the bottom edge.
-const VCOMPACT = new Set(["criclens", "resumeforge", "examen", "vayu"]);
+const VCOMPACT = new Set(["criclens", "examen", "vayu"]);
 const MAX_TAGS: Record<string, number> = {
   basecase: 4,
   criclens: 3,
-  resumeforge: 3,
   examen: 3,
   vayu: 3,
 };
@@ -57,7 +39,7 @@ export default function Work() {
           </span>
         </div>
 
-        <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-4 sm:grid-rows-3">
+        <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 sm:grid-rows-2">
           {projects.map((p, i) => {
             const target = p.href.startsWith("http") ? "_blank" : undefined;
             return (
@@ -67,7 +49,7 @@ export default function Work() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className={`${bySpan[p.id]} group min-h-[140px] [perspective:1400px]`}
+                className="group [perspective:1400px]"
               >
                 <div
                   className="relative h-full w-full [transform-style:preserve-3d] transition-transform duration-[850ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] will-change-transform"

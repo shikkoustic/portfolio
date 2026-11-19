@@ -9,12 +9,15 @@ import { motion } from "framer-motion";
 // first thing inside the section — not absolutely positioned above it — so
 // it only becomes visible once the section's own box genuinely scrolls
 // into view, never before.
-const CREST_HEIGHT = 84;
+// 84px read as barely-there — a crest that modest doesn't register as
+// "water" at normal viewing distance. Scaled way up, with real swing in the
+// curve (not a gentle ripple), so it's unmistakable as a wave.
+const CREST_HEIGHT = 240;
 
 const WAVE_FRAMES = [
-  "M0,36 C120,48 240,22 360,30 C480,38 600,18 720,26 C840,34 960,20 1080,28 C1200,36 1320,22 1440,30 L1440,84 L0,84 Z",
-  "M0,28 C120,20 240,44 360,34 C480,24 600,46 720,36 C840,26 960,44 1080,30 C1200,18 1320,40 1440,26 L1440,84 L0,84 Z",
-  "M0,40 C120,32 240,26 360,38 C480,42 600,24 720,32 C840,40 960,24 1080,36 C1200,42 1320,26 1440,36 L1440,84 L0,84 Z",
+  "M0,110 C120,160 240,60 360,100 C480,140 600,40 720,80 C840,120 960,50 1080,90 C1200,130 1320,70 1440,100 L1440,240 L0,240 Z",
+  "M0,70 C120,30 240,150 360,110 C480,70 600,170 720,130 C840,90 960,160 1080,100 C1200,40 1320,140 1440,80 L1440,240 L0,240 Z",
+  "M0,130 C120,90 240,50 360,120 C480,150 600,60 720,100 C840,140 960,60 1080,130 C1200,160 1320,80 1440,120 L1440,240 L0,240 Z",
 ];
 
 export default function WaveEdge({ fill }: { fill: string }) {

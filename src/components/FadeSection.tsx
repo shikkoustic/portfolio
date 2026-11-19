@@ -1,4 +1,7 @@
-import type { ReactNode } from "react";
+"use client";
+
+import { useEffect, useState, type ReactNode } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import WaveEdge from "./WaveEdge";
 
 // Every section is `position: sticky; top: 0`, all direct siblings under
@@ -14,11 +17,21 @@ import WaveEdge from "./WaveEdge";
 // below the viewport as the user scrolls, and (being a higher z-index)
 // visually buries whatever is stuck beneath it as it arrives.
 //
-// The transition itself is the animated wave crest (WaveEdge) sitting at
-// the very top of the incoming section, in normal flow - not a plain
-// opacity crossfade. Its fill matches the section it belongs to, and the
-// area above its rippling line is transparent, so the still-pinned section
-// underneath shows through it as it rises, exactly like water washing in.
+// The wave crest sits at the very top of the incoming section's content.
+// If it were just rendered there in plain flow, it would ride along as
+// part of the section's own box — and since the box never un-sticks, the
+// crest would stay frozen at the top of the screen forever once the
+// section lands, instead of passing through once and then being gone.
+//
+// Tracking a target element's own rect (even a non-sticky marker) turned
+// out not to extrapolate past "fully entered" the way plain page scrollY
+// does — scrollYProgress from a `target` stays clamped at 1. So instead
+// the crest's exit is driven directly off absolute window scrollY: each
+// section occupies one viewport plus the 45vh settle spacer below, so
+// this section's own landing point in px is `index * slot`, and a short
+// distance after that the crest is translated fully out of view.
+const SLOT_MULT = 1.45; // 1 (h-screen) + 0.45 (the settle spacer)
+
 export default function FadeSection({
   children,
   z,
@@ -30,13 +43,47 @@ export default function FadeSection({
   index: number;
   waveColor?: string;
 }) {
+  const { scrollY } = useScroll();
+  const [vh, setVh] = useState(900);
+
+  useEffect(() => {
+    const update = () => setVh(window.innerHeight);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const slot = vh * SLOT_MULT;
+  const landing = index * slot;
+  const waveY = useTransform(
+    scrollY,
+    [landing, landing + vh * 0.4],
+    ["0%", "-130%"],
+    { clamp: true }
+  );
+
   return (
-    <div
-      className="sticky top-0 flex h-screen flex-col overflow-hidden"
-      style={{ zIndex: z }}
-    >
-      {index > 0 && waveColor && <WaveEdge fill={waveColor} />}
-      <div className="min-h-0 flex-1">{children}</div>
-    </div>
+    <>
+      <div
+        className="sticky top-0 flex h-screen flex-col overflow-hidden"
+        style={{ zIndex: z }}
+      >
+        {index > 0 && waveColor && (
+          <motion.div style={{ y: waveY }} className="shrink-0">
+            <WaveEdge fill={waveColor} />
+          </motion.div>
+        )}
+        <div className="min-h-0 flex-1">{children}</div>
+      </div>
+      {/* A plain, invisible spacer in normal flow - not sticky, not
+          z-indexed, nothing to see. It exists purely to push the NEXT
+          section's natural starting position further down the document, so
+          there's real scroll distance where this section just sits there,
+          fully settled, before the next one's rise even begins. Without it,
+          the next section's natural top sits immediately after this one's
+          own h-screen box, so it starts rising the instant this one finishes
+          landing - there's no pause, the two blend together mid-transition. */}
+      <div aria-hidden className="h-[45vh]" />
+    </>
   );
 }
