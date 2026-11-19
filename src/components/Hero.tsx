@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import RotatingBadge from "./RotatingBadge";
 import Aurora from "./Aurora";
+import EqualizerBadge from "./EqualizerBadge";
 
 export default function Hero() {
   return (
@@ -12,13 +12,10 @@ export default function Hero() {
     >
       <Aurora />
 
-      <div className="pointer-events-none absolute left-1/2 top-[18px] z-10 -translate-x-1/2 -translate-y-1/2 sm:top-[22px]">
-        <RotatingBadge size={300} dark />
-      </div>
-
       <div className="relative mx-auto flex max-w-6xl flex-col gap-10">
-        <div className="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-cream/60">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-[0.2em] text-cream/60">
           <span className="tick pl-3">&nbsp;Builder &amp; CS student</span>
+          <EqualizerBadge />
           <span>( 2026 )</span>
         </div>
 

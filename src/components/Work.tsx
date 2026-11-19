@@ -10,10 +10,23 @@ const bySpan: Record<string, string> = {
   criclens: "sm:col-span-2 sm:row-span-1",
   resumeforge: "sm:col-span-1 sm:row-span-1",
   examen: "sm:col-span-1 sm:row-span-1",
-  vayu: "sm:col-span-4 sm:row-span-1",
+  vayu: "sm:col-span-1 sm:row-span-1",
 };
 
-const SMALL = new Set(["resumeforge", "examen"]);
+// Every card except BaseCase (the only row-span-2 tile) has just 220px of
+// height to work with, so they all need the same compact vertical rhythm —
+// one-line description, a trimmed tag count — or the tags get crammed
+// against the bottom edge. Title size still follows column width (wide
+// 2-col cards can afford a bigger title than 1-col ones).
+const WIDE_TITLE = new Set(["basecase", "criclens"]);
+const VCOMPACT = new Set(["criclens", "resumeforge", "examen", "vayu"]);
+const MAX_TAGS: Record<string, number> = {
+  basecase: 4,
+  criclens: 3,
+  resumeforge: 2,
+  examen: 2,
+  vayu: 2,
+};
 
 export default function Work() {
   return (
@@ -52,7 +65,7 @@ export default function Work() {
                 <ProjectGlyph
                   id={p.id}
                   className={`pointer-events-none absolute -bottom-8 -right-8 text-cream/15 ${
-                    SMALL.has(p.id) ? "h-28 w-28" : "h-48 w-48 sm:h-56 sm:w-56"
+                    WIDE_TITLE.has(p.id) ? "h-48 w-48 sm:h-56 sm:w-56" : "h-28 w-28"
                   }`}
                 />
 
@@ -68,9 +81,7 @@ export default function Work() {
                 <div className="relative">
                   <h3
                     className={`font-display font-extrabold leading-tight drop-shadow-sm ${
-                      SMALL.has(p.id)
-                        ? "text-2xl"
-                        : "text-3xl sm:text-4xl"
+                      WIDE_TITLE.has(p.id) ? "text-3xl sm:text-4xl" : "text-2xl"
                     }`}
                   >
                     {p.name}
@@ -80,14 +91,14 @@ export default function Work() {
                   </p>
                   <p
                     className={`mt-3 max-w-md text-xs leading-relaxed text-cream/85 sm:text-sm ${
-                      SMALL.has(p.id) ? "line-clamp-1" : "line-clamp-2"
+                      VCOMPACT.has(p.id) ? "line-clamp-1" : "line-clamp-2"
                     }`}
                   >
                     {p.description}
                   </p>
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
-                    {(SMALL.has(p.id) ? p.tags.slice(0, 2) : p.tags.slice(0, 4)).map((t) => (
+                    {p.tags.slice(0, MAX_TAGS[p.id] ?? 4).map((t) => (
                       <span
                         key={t}
                         className="rounded-full border border-cream/30 bg-black/15 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-cream backdrop-blur-sm"

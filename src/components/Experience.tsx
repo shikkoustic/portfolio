@@ -12,41 +12,48 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line bg-cream px-5 py-24 sm:px-10"
+      className="relative overflow-hidden px-5 py-24 sm:px-10"
+      style={{ background: "#1C1712" }}
     >
-      <div className="mx-auto w-full max-w-4xl">
-        <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-50"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 85% 0%, #3C7BE022 0%, transparent 60%), radial-gradient(55% 45% at 10% 100%, #E08A3E22 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative mx-auto w-full max-w-4xl">
+        <span className="text-xs uppercase tracking-[0.2em] text-cream/50">
           ( Experience )
         </span>
-        <h2 className="font-display mt-2 text-4xl font-extrabold uppercase tracking-tight sm:text-5xl">
+        <h2 className="font-display mt-2 text-4xl font-extrabold uppercase tracking-tight text-cream sm:text-5xl">
           Outside the IDE
         </h2>
-      </div>
 
-      <div className="relative mx-auto mt-16 flex w-full max-w-2xl flex-col items-center">
-        <span className="absolute top-0 bottom-0 w-px bg-line" />
-
-        {experience.map((e, i) => {
-          const flip = i % 2 === 1;
-          return (
-            <div key={e.org} className="relative z-10 w-full py-7">
-              <span className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-cream bg-ink" />
+        <div className="relative mt-14 flex flex-col gap-10 border-l border-cream/15 pl-8 sm:pl-10">
+          {experience.map((e, i) => (
+            <motion.div
+              key={e.org}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.55, delay: i * 0.1 }}
+              className="relative"
+            >
+              <span
+                className="absolute -left-[41px] top-7 h-3.5 w-3.5 rounded-full border-2 sm:-left-[49px]"
+                style={{ background: GRADIENTS[e.org], borderColor: "#1C1712" }}
+              />
 
               <motion.div
-                initial={{ opacity: 0, x: flip ? 40 : -40, rotate: flip ? 2 : -2 }}
-                whileInView={{ opacity: 1, x: 0, rotate: flip ? 1.5 : -1.5 }}
-                viewport={{ once: true, margin: "-100px" }}
-                whileHover={{ rotate: 0, scale: 1.02 }}
-                transition={{ duration: 0.6 }}
-                className={`relative flex items-center gap-4 rounded-full px-6 py-5 text-cream shadow-[0_24px_50px_-20px_rgba(0,0,0,0.45)] sm:px-8 sm:py-6 ${
-                  flip ? "ml-auto flex-row-reverse text-right" : "mr-auto"
-                }`}
-                style={{
-                  background: GRADIENTS[e.org],
-                  width: "88%",
-                }}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25 }}
+                className="flex items-center gap-4 rounded-2xl px-5 py-4 text-cream shadow-[0_20px_45px_-18px_rgba(0,0,0,0.6)] sm:px-6 sm:py-5"
+                style={{ background: GRADIENTS[e.org] }}
               >
-                <span className="font-display flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black/25 text-lg font-extrabold backdrop-blur-sm">
+                <span className="font-display flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black/25 text-base font-extrabold backdrop-blur-sm">
                   {e.org
                     .split(" ")
                     .map((w) => w[0])
@@ -58,33 +65,23 @@ export default function Experience() {
                   <p className="text-[10px] font-bold uppercase tracking-widest text-cream/70">
                     {e.period}
                   </p>
-                  <p className="font-display truncate text-xl font-extrabold sm:text-2xl">
+                  <p className="font-display truncate text-lg font-extrabold sm:text-xl">
                     {e.role}
                   </p>
-                  <p className="text-xs font-semibold text-cream/85 sm:text-sm">{e.org}</p>
+                  <p className="truncate text-xs font-semibold text-cream/85 sm:text-sm">
+                    {e.org}
+                  </p>
                 </div>
-
-                <span className="font-display shrink-0 text-xl opacity-70">
-                  {flip ? "←" : "→"}
-                </span>
               </motion.div>
 
-              <motion.ul
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                className={`mt-4 flex flex-col gap-1.5 text-sm text-ink-soft sm:w-[88%] ${
-                  flip ? "ml-auto text-right" : "mr-auto"
-                }`}
-              >
+              <ul className="mt-3 flex flex-col gap-1 text-sm text-cream/60">
                 {e.points.map((pt) => (
                   <li key={pt}>{pt}</li>
                 ))}
-              </motion.ul>
-            </div>
-          );
-        })}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
