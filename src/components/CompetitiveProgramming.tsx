@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cpPlatforms, cpSummary, CPBadgeItem } from "@/data/cp";
-import GithubHeatmap from "./GithubHeatmap";
 
 // Front face: accent blooms top-left → near-black
 const FRONT_GRADIENTS: Record<string, string> = {
@@ -64,16 +63,16 @@ export default function CompetitiveProgramming() {
   return (
     <section
       id="cp"
-      className="border-b border-line bg-cream px-5 py-20 sm:px-10"
+      className="flex h-full flex-col justify-center border-b border-line bg-cream px-5 py-6 sm:px-10"
     >
       <div className="mx-auto w-full max-w-6xl">
         {/* Section Header */}
-        <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+        <div className="mb-3 flex flex-col justify-between gap-3 sm:mb-4 sm:flex-row sm:items-end">
           <div>
             <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
               ( Competitive programming )
             </span>
-            <h2 className="font-display mt-2 text-4xl font-extrabold uppercase tracking-tight sm:text-5xl">
+            <h2 className="font-display mt-1 text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
               1000+ problems deep
             </h2>
           </div>
@@ -117,11 +116,11 @@ export default function CompetitiveProgramming() {
                 whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.55, delay: i * 0.1 }}
-                className="relative min-h-[340px] [perspective:1400px]"
+                className="relative min-h-[260px] [perspective:1400px]"
               >
                 {/* Smooth 3D rotating container - gradual, elegant flip */}
                 <motion.div
-                  className="relative h-full min-h-[340px] w-full [transform-style:preserve-3d] will-change-transform"
+                  className="relative h-full min-h-[260px] w-full [transform-style:preserve-3d] will-change-transform"
                   animate={{ rotateY: isFlipped ? 180 : 0 }}
                   transition={{
                     duration: 0.85,
@@ -134,7 +133,7 @@ export default function CompetitiveProgramming() {
                 >
                   {/* ───────────────── FRONT (Ratings & Stats) ───────────────── */}
                   <div
-                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[28px] p-7 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
+                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[24px] p-5 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
                     style={{
                       background: FRONT_GRADIENTS[p.name],
                       pointerEvents: isFlipped ? "none" : "auto",
@@ -195,7 +194,7 @@ export default function CompetitiveProgramming() {
                     </div>
 
                     <div className="relative my-auto py-2">
-                      <p className="font-display text-6xl font-black leading-none tracking-tight">
+                      <p className="font-display text-5xl font-black leading-none tracking-tight">
                         {p.rating}
                       </p>
                       <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-cream/80">
@@ -203,13 +202,13 @@ export default function CompetitiveProgramming() {
                       </p>
                     </div>
 
-                    <div className="relative border-t border-cream/20 pt-4">
+                    <div className="relative border-t border-cream/20 pt-3">
                       <div className="flex items-baseline justify-between">
                         <div>
                           <p className="font-display text-2xl font-extrabold leading-tight">
                             {p.stat}
                           </p>
-                          <p className="text-xs uppercase tracking-wide text-cream/70">
+                          <p className="text-[10px] uppercase tracking-wide text-cream/70">
                             {p.statLabel}
                           </p>
                         </div>
@@ -222,7 +221,7 @@ export default function CompetitiveProgramming() {
 
                   {/* ───────────────── BACK (Official Badges Showcase) ───────────────── */}
                   <div
-                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[28px] p-6 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]"
+                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[24px] p-5 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]"
                     style={{
                       background: BACK_GRADIENTS[p.name],
                       pointerEvents: isFlipped ? "auto" : "none",
@@ -350,10 +349,6 @@ export default function CompetitiveProgramming() {
               </motion.div>
             );
           })}
-        </div>
-
-        <div className="mt-6">
-          <GithubHeatmap />
         </div>
       </div>
     </section>

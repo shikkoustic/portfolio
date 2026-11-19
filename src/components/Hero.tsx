@@ -86,6 +86,26 @@ export default function Hero() {
       >
         SS
       </span>
+
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-cream/50"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <span className="text-[10px] font-bold uppercase tracking-[0.25em]">
+          Scroll
+        </span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M3 6L8 11L13 6"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </motion.div>
     </section>
   );
 }

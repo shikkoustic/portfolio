@@ -37,14 +37,17 @@ const MAX_TAGS: Record<string, number> = {
 
 export default function Work() {
   return (
-    <section id="work" className="border-b border-line bg-cream px-5 py-20 sm:px-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-10">
+    <section
+      id="work"
+      className="flex h-full flex-col border-b border-line bg-cream px-5 py-6 sm:px-10 sm:py-8"
+    >
+      <div className="mx-auto flex h-full w-full max-w-6xl flex-col">
+        <div className="mb-4 shrink-0 sm:mb-5">
           <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
             ( Selected work )
           </span>
-          <h2 className="font-display mt-2 text-4xl font-extrabold uppercase tracking-tight sm:text-5xl">
-            Look through my lens
+          <h2 className="font-display mt-1 text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+            Projects
           </h2>
           <span className="mt-1 block text-xs text-ink-soft sm:hidden">
             Tap a card for the full story
@@ -54,7 +57,7 @@ export default function Work() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-4 sm:[grid-auto-rows:220px]">
+        <div className="grid min-h-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-4 sm:grid-rows-3">
           {projects.map((p, i) => {
             const target = p.href.startsWith("http") ? "_blank" : undefined;
             return (
@@ -64,10 +67,10 @@ export default function Work() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
-                className={`${bySpan[p.id]} group [perspective:1400px]`}
+                className={`${bySpan[p.id]} group min-h-[140px] [perspective:1400px]`}
               >
                 <div
-                  className="relative h-full min-h-[220px] w-full [transform-style:preserve-3d] transition-transform duration-[850ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] will-change-transform"
+                  className="relative h-full w-full [transform-style:preserve-3d] transition-transform duration-[850ms] [transition-timing-function:cubic-bezier(0.4,0,0.2,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] will-change-transform"
                   tabIndex={0}
                   style={{ transformOrigin: "center center" }}
                 >
@@ -76,7 +79,7 @@ export default function Work() {
                     href={p.href}
                     target={target}
                     rel={target ? "noreferrer" : undefined}
-                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[28px] p-7 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden]"
+                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-2xl p-4 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] sm:p-5"
                   >
                     <div
                       className="absolute inset-0"
@@ -86,38 +89,38 @@ export default function Work() {
                     />
                     <ProjectGlyph
                       id={p.id}
-                      className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-40 text-cream/15 sm:h-48 sm:w-48"
+                      className="pointer-events-none absolute -bottom-8 -right-8 h-32 w-32 text-cream/15 sm:h-40 sm:w-40"
                     />
 
                     <div className="relative flex items-start justify-between">
-                      <span className="rounded-full bg-cream px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink">
+                      <span className="rounded-full bg-cream px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-ink">
                         {p.status === "live" ? "Live" : "In progress"}
                       </span>
-                      <span className="text-xs uppercase tracking-wide text-cream/70">
+                      <span className="text-[10px] uppercase tracking-wide text-cream/70">
                         {p.period}
                       </span>
                     </div>
 
                     <div className="relative">
-                      <h3 className="font-display text-3xl font-extrabold leading-tight drop-shadow-sm sm:text-4xl">
+                      <h3 className="font-display text-xl font-extrabold leading-tight drop-shadow-sm sm:text-2xl">
                         {p.name}
                       </h3>
-                      <p className="mt-1 text-xs uppercase tracking-wide text-cream/80 sm:text-sm">
+                      <p className="mt-0.5 text-[10px] uppercase tracking-wide text-cream/80 sm:text-xs">
                         {p.tagline}
                       </p>
                       <p
-                        className={`mt-3 max-w-md text-xs leading-relaxed text-cream/85 sm:text-sm ${
+                        className={`mt-1.5 max-w-md text-[11px] leading-relaxed text-cream/85 sm:text-xs ${
                           VCOMPACT.has(p.id) ? "line-clamp-1" : "line-clamp-2"
                         }`}
                       >
                         {p.description}
                       </p>
 
-                      <div className="mt-4 flex flex-wrap gap-1.5">
+                      <div className="mt-2 flex flex-wrap gap-1">
                         {p.tags.slice(0, MAX_TAGS[p.id] ?? 4).map((t) => (
                           <span
                             key={t}
-                            className="rounded-full border border-cream/30 bg-black/15 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-cream backdrop-blur-sm"
+                            className="rounded-full border border-cream/30 bg-black/15 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wide text-cream backdrop-blur-sm"
                           >
                             {t}
                           </span>
@@ -131,7 +134,7 @@ export default function Work() {
                     href={p.href}
                     target={target}
                     rel={target ? "noreferrer" : undefined}
-                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[28px] p-7 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-2xl p-4 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-5"
                     style={{
                       background: `radial-gradient(130% 110% at 82% 88%, ${p.accent} 0%, ${p.accent}55 32%, #0B0B0C 68%)`,
                     }}
@@ -148,29 +151,29 @@ export default function Work() {
                     {/* ghosted glyph watermark */}
                     <ProjectGlyph
                       id={p.id}
-                      className="pointer-events-none absolute -top-6 -left-6 h-40 w-40 text-cream/10 sm:h-48 sm:w-48"
+                      className="pointer-events-none absolute -top-6 -left-6 h-32 w-32 text-cream/10 sm:h-40 sm:w-40"
                     />
                     <div className="relative flex items-start justify-between">
-                      <h3 className="font-display text-xl font-extrabold leading-tight sm:text-2xl">
+                      <h3 className="font-display text-lg font-extrabold leading-tight sm:text-xl">
                         {p.name}
                       </h3>
                       <span className="shrink-0 text-lg opacity-80">↗</span>
                     </div>
-                    <p className={`relative max-w-md text-xs leading-relaxed text-cream/95 sm:text-sm ${VCOMPACT.has(p.id) ? "line-clamp-3" : "line-clamp-5"}`}>
+                    <p className={`relative max-w-md text-[11px] leading-relaxed text-cream/95 sm:text-xs ${VCOMPACT.has(p.id) ? "line-clamp-2" : "line-clamp-4"}`}>
                       {p.longDescription}
                     </p>
                     <div className="relative flex flex-wrap items-center justify-between gap-2">
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-1">
                         {p.tags.map((t) => (
                           <span
                             key={t}
-                            className="rounded-full border border-cream/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-cream"
+                            className="rounded-full border border-cream/40 px-2 py-0.5 text-[9px] font-medium uppercase tracking-wide text-cream"
                           >
                             {t}
                           </span>
                         ))}
                       </div>
-                      <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-wide text-cream/90">
+                      <span className="whitespace-nowrap text-[9px] font-bold uppercase tracking-wide text-cream/90">
                         {p.href === "#" ? "Not deployed yet" : "View project"}
                       </span>
                     </div>

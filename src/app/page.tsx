@@ -1,10 +1,12 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import WaveTransition from "@/components/WaveTransition";
+import FadeSection from "@/components/FadeSection";
 import Work from "@/components/Work";
 import Experience from "@/components/Experience";
 import CompetitiveProgramming from "@/components/CompetitiveProgramming";
+import GithubActivity from "@/components/GithubActivity";
 import About from "@/components/About";
+import PlayGame from "@/components/PlayGame";
 import Stack from "@/components/Stack";
 import Footer from "@/components/Footer";
 
@@ -13,37 +15,30 @@ export default function Home() {
     <>
       <Nav />
       <main className="flex-1">
-        {/* A sticky element only stays visually pinned for as long as its
-            CONTAINING BLOCK (its parent) has "slack" beyond the element's
-            own height — pin duration = parent height - child height. A
-            parent exactly one viewport tall gives zero slack (Hero would
-            unstick instantly), and a parent the size of `main` gives it no
-            end to that slack (Hero never releases, paints over everything
-            below forever). 200vh gives Hero a full extra viewport of
-            genuine pin duration. */}
-        <div className="relative h-[200vh]">
-          <div className="sticky top-0 z-0 h-screen overflow-hidden">
-            <Hero />
-          </div>
-        </div>
-        {/* Work's wrapper normally starts exactly where Hero's 200vh box
-            ends - which is also exactly Hero's unstick point, by
-            construction. That means they'd always be flush, never
-            overlapping: Work would only ever appear right as Hero finishes
-            releasing, so the wave's "see Hero through the transparent gap"
-            effect would never have anything behind it to show. Pulling
-            Work up with a negative margin makes it start rising into the
-            viewport while Hero is still genuinely pinned, giving a real
-            overlap window sized comfortably larger than the wave's own
-            height for the crest to animate across. */}
-        <div className="relative z-10 -mt-[380px]">
-          <WaveTransition />
+        <FadeSection z={0} index={0}>
+          <Hero />
+        </FadeSection>
+        <FadeSection z={10} index={1} waveColor="#f3efe6">
           <Work />
-        </div>
-        <Experience />
-        <CompetitiveProgramming />
-        <About />
-        <Stack />
+        </FadeSection>
+        <FadeSection z={20} index={2}>
+          <Experience />
+        </FadeSection>
+        <FadeSection z={30} index={3}>
+          <CompetitiveProgramming />
+        </FadeSection>
+        <FadeSection z={40} index={4}>
+          <GithubActivity />
+        </FadeSection>
+        <FadeSection z={50} index={5}>
+          <About />
+        </FadeSection>
+        <FadeSection z={60} index={6}>
+          <PlayGame />
+        </FadeSection>
+        <FadeSection z={70} index={7}>
+          <Stack />
+        </FadeSection>
       </main>
       <Footer />
     </>

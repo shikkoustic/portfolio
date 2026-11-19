@@ -19,8 +19,11 @@ const TOOLS = [
 export default function Stack() {
   const loop = [...TOOLS, ...TOOLS];
   return (
-    <section className="border-b border-line py-10">
-      <div className="scrollbar-none overflow-x-hidden">
+    <section className="flex h-full flex-col items-center justify-center gap-6 border-b border-line bg-cream px-5">
+      <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
+        ( Tools I reach for )
+      </span>
+      <div className="scrollbar-none w-full overflow-x-hidden">
         <div className="marquee-track flex w-max gap-10 px-5">
           {loop.map((t, i) => (
             <span

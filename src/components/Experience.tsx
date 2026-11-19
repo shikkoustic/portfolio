@@ -12,7 +12,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative overflow-hidden px-5 py-24 sm:px-10"
+      className="relative flex h-full flex-col justify-center overflow-hidden px-5 py-6 sm:px-10"
       style={{ background: "#1C1712" }}
     >
       <div
@@ -28,11 +28,11 @@ export default function Experience() {
         <span className="text-xs uppercase tracking-[0.2em] text-cream/50">
           ( Experience )
         </span>
-        <h2 className="font-display mt-2 text-4xl font-extrabold uppercase tracking-tight text-cream sm:text-5xl">
+        <h2 className="font-display mt-1 text-3xl font-extrabold uppercase tracking-tight text-cream sm:text-4xl">
           Outside the IDE
         </h2>
 
-        <div className="relative mt-14 flex flex-col gap-10 border-l border-cream/15 pl-8 sm:pl-10">
+        <div className="relative mt-6 flex flex-col gap-5 border-l border-cream/15 pl-8 sm:mt-8 sm:gap-6 sm:pl-10">
           {experience.map((e, i) => (
             <motion.div
               key={e.org}
@@ -43,17 +43,17 @@ export default function Experience() {
               className="relative"
             >
               <span
-                className="absolute -left-[41px] top-7 h-3.5 w-3.5 rounded-full border-2 sm:-left-[49px]"
+                className="absolute -left-[41px] top-6 h-3.5 w-3.5 rounded-full border-2 sm:-left-[49px]"
                 style={{ background: GRADIENTS[e.org], borderColor: "#1C1712" }}
               />
 
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.25 }}
-                className="flex items-center gap-4 rounded-2xl px-5 py-4 text-cream shadow-[0_20px_45px_-18px_rgba(0,0,0,0.6)] sm:px-6 sm:py-5"
+                className="flex items-center gap-4 rounded-2xl px-5 py-3 text-cream shadow-[0_20px_45px_-18px_rgba(0,0,0,0.6)] sm:px-6 sm:py-4"
                 style={{ background: GRADIENTS[e.org] }}
               >
-                <span className="font-display flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black/25 text-base font-extrabold backdrop-blur-sm">
+                <span className="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/25 text-sm font-extrabold backdrop-blur-sm">
                   {e.org
                     .split(" ")
                     .map((w) => w[0])
@@ -65,7 +65,7 @@ export default function Experience() {
                   <p className="text-[10px] font-bold uppercase tracking-widest text-cream/70">
                     {e.period}
                   </p>
-                  <p className="font-display truncate text-lg font-extrabold sm:text-xl">
+                  <p className="font-display truncate text-base font-extrabold sm:text-lg">
                     {e.role}
                   </p>
                   <p className="truncate text-xs font-semibold text-cream/85 sm:text-sm">
@@ -74,7 +74,7 @@ export default function Experience() {
                 </div>
               </motion.div>
 
-              <ul className="mt-3 flex flex-col gap-1 text-sm text-cream/60">
+              <ul className="mt-2 flex flex-col gap-1 text-xs text-cream/60 sm:text-sm">
                 {e.points.map((pt) => (
                   <li key={pt}>{pt}</li>
                 ))}
