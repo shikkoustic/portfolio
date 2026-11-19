@@ -17,17 +17,29 @@ import WaveEdge from "./WaveEdge";
 // below the viewport as the user scrolls, and (being a higher z-index)
 // visually buries whatever is stuck beneath it as it arrives.
 //
-// The wave crest sits at the very top of the incoming section, as an
-// absolutely positioned OVERLAY on top of the content — not a sibling
-// sharing flex space with it. A `transform: translateY` (the `y` motion
-// value below) only moves where something is PAINTED; it never gives back
-// the layout space that element reserves. Putting the crest in normal flow
-// alongside the content meant that even once it had visually translated
-// away, its 240px was still being subtracted from the content's height —
-// which is why the section kept rendering as a big blank gap on top with
-// everything crammed into the bottom half. Overlaying it means the content
-// always gets the section's full height, with the crest floating above it
-// only while it's actually passing through.
+// The wave crest sits at the very top of the incoming section, as a
+// normal flex sibling BEFORE the content (not an absolutely positioned
+// overlay). Two things tried before this both failed the same way, for
+// opposite reasons:
+//   - Giving it a fixed height and sliding it away with `transform: y`:
+//     a transform only moves where something PAINTS, it never gives back
+//     the layout space the element reserves, so the content below stayed
+//     squeezed into (section height - crest height) even after the crest
+//     had visually scrolled off - rendering as a blank gap up top with
+//     everything crammed into the bottom half.
+//   - Overlaying it on top of the content instead (so the content could
+//     use the section's full height): the crest's fill is the destination
+//     section's own background color, by design, so its transparent gaps
+//     read as "water" and its filled parts blend with the content behind
+//     it once landed. But stacked ON TOP of that same content, its filled
+//     parts don't blend with anything - they just paint over and hide the
+//     heading and the top row of cards sitting directly underneath.
+// The actual fix: animate the crest's own HEIGHT (240px -> 0px) over the
+// same scroll range, instead of transforming it. A height change is a
+// real layout change, so as it shrinks, the content - a normal flex-1
+// sibling right after it - naturally reflows upward to reclaim the space,
+// at the same rate the crest visually collapses. No overlay, no reserved
+// dead space once it's done.
 //
 // Tracking a target element's own rect (even a non-sticky marker) turned
 // out not to extrapolate past "fully entered" the way plain page scrollY
@@ -35,7 +47,7 @@ import WaveEdge from "./WaveEdge";
 // the crest's exit is driven directly off absolute window scrollY: each
 // section occupies one viewport plus the 45vh settle spacer below, so
 // this section's own landing point in px is `index * slot`, and a short
-// distance after that the crest is translated fully out of view.
+// distance after that the crest has fully collapsed.
 const SLOT_MULT = 1.45; // 1 (h-screen) + 0.45 (the settle spacer)
 
 export default function FadeSection({
@@ -61,28 +73,28 @@ export default function FadeSection({
 
   const slot = vh * SLOT_MULT;
   const landing = index * slot;
-  const waveY = useTransform(
+  const waveHeight = useTransform(
     scrollY,
-    [landing, landing + vh * 0.4],
-    ["0%", "-130%"],
+    [landing, landing + vh * 0.25],
+    [240, 0],
     { clamp: true }
   );
 
   return (
     <>
       <div
-        className="sticky top-0 h-screen overflow-hidden"
+        className="sticky top-0 flex h-screen flex-col overflow-hidden"
         style={{ zIndex: z }}
       >
         {index > 0 && waveColor && (
           <motion.div
-            style={{ y: waveY }}
-            className="pointer-events-none absolute inset-x-0 top-0 z-10"
+            style={{ height: waveHeight }}
+            className="pointer-events-none w-full shrink-0 overflow-hidden"
           >
             <WaveEdge fill={waveColor} />
           </motion.div>
         )}
-        <div className="h-full">{children}</div>
+        <div className="min-h-0 flex-1">{children}</div>
       </div>
       {/* A plain, invisible spacer in normal flow - not sticky, not
           z-indexed, nothing to see. It exists purely to push the NEXT
