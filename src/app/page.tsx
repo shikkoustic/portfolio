@@ -16,7 +16,7 @@ export default function Home() {
         <div className="sticky top-0 z-0 h-screen overflow-hidden">
           <Hero />
         </div>
-        <div className="sticky top-0 z-10 min-h-screen bg-cream">
+        <div className="relative z-10">
           <WaveTransition />
           <Work />
         </div>

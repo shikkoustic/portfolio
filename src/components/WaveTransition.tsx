@@ -2,20 +2,21 @@
 
 import { motion } from "framer-motion";
 
-// Hero sits in a `sticky top-0 h-screen` wrapper and Work sits right after it
-// in a second `sticky top-0` wrapper with a higher z-index — pure CSS. Hero
-// never moves: it just stays pinned at the top of the viewport. Work's box
-// starts off-screen below and rises up through normal scroll until it's
-// pinned too, at which point it fully covers Hero — exactly water washing
-// up over land, driven entirely by the browser's native sticky positioning.
-// No scroll listener, no React state, so it can't fight Lenis's rAF loop.
+// Hero sits in a `sticky top-0 h-screen` wrapper and never moves. Work sits
+// right after it as a totally normal, non-sticky block with a higher
+// z-index, so it just rises up through ordinary scroll and visually washes
+// over the pinned Hero beneath it — no scroll listener, no motion values on
+// Hero, nothing fighting Lenis.
 //
-// This component is purely the crest: it sits flush with Work's own top
-// edge and pokes `CREST_HEIGHT` above it, so while Work's box is rising,
-// its wavy top edge is what's visible washing over Hero first, before the
-// flat section underneath catches up. The crest never stops rippling
-// (phase-shifted `d` frames looped on a timer) so it reads as live water,
-// not a static decal.
+// This crest renders IN NORMAL FLOW as the first thing inside Work's own
+// box — it does not escape above Work's box the way an absolutely
+// positioned element with a negative offset would. That matters: anything
+// poking above Work's box is, by definition, visible the instant Work's box
+// is anywhere near the viewport, including before the user has scrolled at
+// all. Kept in-flow, the crest only enters the screen once Work's box
+// itself actually scrolls into view. The area above the wavy line is left
+// transparent so Hero (painted behind, lower z-index) shows through it
+// until the crest genuinely reaches that point as you scroll.
 const CREST_HEIGHT = 96;
 
 const WAVE_FRAMES = [
@@ -26,11 +27,7 @@ const WAVE_FRAMES = [
 
 export default function WaveTransition() {
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none absolute inset-x-0 w-full overflow-visible"
-      style={{ top: -CREST_HEIGHT, height: CREST_HEIGHT }}
-    >
+    <div aria-hidden className="pointer-events-none w-full" style={{ height: CREST_HEIGHT }}>
       <svg
         viewBox={`0 0 1440 ${CREST_HEIGHT}`}
         preserveAspectRatio="none"
