@@ -21,7 +21,11 @@ export const metadata: Metadata = {
     "Shikhar Srivastava — B.Tech CSE student building ML, computer vision, and full-stack products.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
