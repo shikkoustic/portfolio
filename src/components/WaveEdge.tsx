@@ -32,7 +32,13 @@ export default function WaveEdge({ fill }: { fill: string }) {
           fill={fill}
           animate={{ d: WAVE_FRAMES }}
           transition={{
-            duration: 6,
+            // The crest is only ever on screen for a brief window — it washes
+            // in, then its own height collapses away a short scroll later.
+            // At a slow multi-second ripple period, a normal scroll flick
+            // clears it before the shape visibly moves at all, so it reads
+            // as a static decal instead of water. Fast enough here that the
+            // morph is visible even in that short exposure.
+            duration: 1.1,
             repeat: Infinity,
             repeatType: "mirror",
             ease: "easeInOut",
