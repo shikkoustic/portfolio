@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
 import { ProjectGlyph } from "./ProjectGlyph";
-import { TiltCard } from "./TiltCard";
 
 // Explicit placement, not source-order auto-placement: the implicit grid put
 // Examen+Vayu under BaseCase in a new row (auto-placement never backtracks
@@ -47,72 +46,124 @@ export default function Work() {
           <h2 className="font-display mt-2 text-4xl font-extrabold uppercase tracking-tight sm:text-5xl">
             Look through my lens
           </h2>
+          <span className="mt-1 block text-xs text-ink-soft sm:hidden">
+            Tap a card for the full story
+          </span>
+          <span className="mt-1 hidden text-xs text-ink-soft sm:block">
+            Hover a card for the full story
+          </span>
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-4 sm:[grid-auto-rows:220px]">
-          {projects.map((p, i) => (
-            <motion.div
-              key={p.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              className={bySpan[p.id]}
-            >
-              <TiltCard
-                href={p.href}
-                target={p.href.startsWith("http") ? "_blank" : undefined}
-                className="group relative flex h-full min-h-[220px] flex-col justify-between overflow-hidden rounded-[28px] p-7 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)]"
+          {projects.map((p, i) => {
+            const target = p.href.startsWith("http") ? "_blank" : undefined;
+            return (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.07 }}
+                className={`${bySpan[p.id]} group [perspective:1400px]`}
               >
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: `radial-gradient(130% 110% at 18% 12%, ${p.accent} 0%, ${p.accent}55 32%, #0B0B0C 68%)`,
-                  }}
-                />
-                <ProjectGlyph
-                  id={p.id}
-                  className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-40 text-cream/15 sm:h-48 sm:w-48"
-                />
-
-                <div className="relative flex items-start justify-between">
-                  <span className="rounded-full bg-cream px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink">
-                    {p.status === "live" ? "Live" : "In progress"}
-                  </span>
-                  <span className="text-xs uppercase tracking-wide text-cream/70">
-                    {p.period}
-                  </span>
-                </div>
-
-                <div className="relative">
-                  <h3 className="font-display text-3xl font-extrabold leading-tight drop-shadow-sm sm:text-4xl">
-                    {p.name}
-                  </h3>
-                  <p className="mt-1 text-xs uppercase tracking-wide text-cream/80 sm:text-sm">
-                    {p.tagline}
-                  </p>
-                  <p
-                    className={`mt-3 max-w-md text-xs leading-relaxed text-cream/85 sm:text-sm ${
-                      VCOMPACT.has(p.id) ? "line-clamp-1" : "line-clamp-2"
-                    }`}
+                <div className="relative h-full min-h-[220px] w-full [transform-style:preserve-3d] transition-transform duration-[650ms] [transition-timing-function:cubic-bezier(.33,.75,.3,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)]">
+                  {/* FRONT */}
+                  <a
+                    href={p.href}
+                    target={target}
+                    rel={target ? "noreferrer" : undefined}
+                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[28px] p-7 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden]"
                   >
-                    {p.description}
-                  </p>
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background: `radial-gradient(130% 110% at 18% 12%, ${p.accent} 0%, ${p.accent}55 32%, #0B0B0C 68%)`,
+                      }}
+                    />
+                    <ProjectGlyph
+                      id={p.id}
+                      className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-40 text-cream/15 sm:h-48 sm:w-48"
+                    />
 
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {p.tags.slice(0, MAX_TAGS[p.id] ?? 4).map((t) => (
-                      <span
-                        key={t}
-                        className="rounded-full border border-cream/30 bg-black/15 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-cream backdrop-blur-sm"
-                      >
-                        {t}
+                    <div className="relative flex items-start justify-between">
+                      <span className="rounded-full bg-cream px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink">
+                        {p.status === "live" ? "Live" : "In progress"}
                       </span>
-                    ))}
-                  </div>
+                      <span className="text-xs uppercase tracking-wide text-cream/70">
+                        {p.period}
+                      </span>
+                    </div>
+
+                    <div className="relative">
+                      <h3 className="font-display text-3xl font-extrabold leading-tight drop-shadow-sm sm:text-4xl">
+                        {p.name}
+                      </h3>
+                      <p className="mt-1 text-xs uppercase tracking-wide text-cream/80 sm:text-sm">
+                        {p.tagline}
+                      </p>
+                      <p
+                        className={`mt-3 max-w-md text-xs leading-relaxed text-cream/85 sm:text-sm ${
+                          VCOMPACT.has(p.id) ? "line-clamp-1" : "line-clamp-2"
+                        }`}
+                      >
+                        {p.description}
+                      </p>
+
+                      <div className="mt-4 flex flex-wrap gap-1.5">
+                        {p.tags.slice(0, MAX_TAGS[p.id] ?? 4).map((t) => (
+                          <span
+                            key={t}
+                            className="rounded-full border border-cream/30 bg-black/15 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-cream backdrop-blur-sm"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </a>
+
+                  {/* BACK */}
+                  <a
+                    href={p.href}
+                    target={target}
+                    rel={target ? "noreferrer" : undefined}
+                    className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[28px] p-7 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)]"
+                    style={{ background: p.accent }}
+                  >
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 opacity-70"
+                      style={{ background: "radial-gradient(120% 100% at 85% 100%, rgba(0,0,0,0.45) 0%, transparent 60%)" }}
+                    />
+                    <div className="relative flex items-start justify-between">
+                      <h3 className="font-display text-xl font-extrabold leading-tight sm:text-2xl">
+                        {p.name}
+                      </h3>
+                      <span className="shrink-0 text-lg opacity-80">↗</span>
+                    </div>
+                    <p className="relative max-w-md text-xs leading-relaxed text-cream/95 sm:text-sm">
+                      {p.longDescription}
+                    </p>
+                    <div className="relative flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex flex-wrap gap-1.5">
+                        {p.tags.map((t) => (
+                          <span
+                            key={t}
+                            className="rounded-full border border-cream/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wide text-cream"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-wide text-cream/90">
+                        {p.href === "#" ? "Not deployed yet" : "View project"}
+                      </span>
+                    </div>
+                  </a>
                 </div>
-              </TiltCard>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

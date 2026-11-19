@@ -1,14 +1,16 @@
 export function Highlight({
   children,
   color = "#2A4FD6",
+  dark = false,
 }: {
   children: React.ReactNode;
   color?: string;
+  dark?: boolean;
 }) {
   return (
     <span
-      className="rounded-md px-1.5 py-0.5 font-semibold text-ink"
-      style={{ background: `${color}33` }}
+      className={`rounded-md px-1.5 py-0.5 font-semibold ${dark ? "text-cream" : "text-ink"}`}
+      style={{ background: dark ? `${color}55` : `${color}33` }}
     >
       {children}
     </span>

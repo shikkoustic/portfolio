@@ -9,43 +9,64 @@ export default function About() {
   return (
     <section
       id="about"
-      className="flex min-h-screen flex-col justify-center border-b border-line px-5 py-20 sm:px-10"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden px-5 py-20 text-cream sm:px-10"
+      style={{ background: "#13201C" }}
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(55% 45% at 90% 0%, #6C4FD622 0%, transparent 60%), radial-gradient(50% 40% at 0% 100%, #C17A2E1E 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative mx-auto grid w-full max-w-6xl grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
+          <span className="text-xs uppercase tracking-[0.2em] text-cream/50">
             ( About )
           </span>
-          <h2 className="font-display mt-2 text-4xl font-extrabold uppercase leading-[0.95] tracking-tight sm:text-5xl">
+          <h2 className="font-display mt-2 text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-cream sm:text-5xl">
             Hey, I&rsquo;m Shikhar.
             <br />
             Problem first,
             <br />
             tools second.
           </h2>
-          <p className="mt-6 max-w-md text-sm leading-relaxed text-ink-soft sm:text-base">
-            Second-year CS at Bennett (<Highlight color="#2A4FD6">9.35 CGPA</Highlight>),
-            currently interning at <Highlight color="#2A4FD6">Zyflow</Highlight> on
-            agentic AI — teaching LLMs to actually finish a task, not just talk
-            about one. I also run the books for{" "}
-            <Highlight color="#C17A2E">CodeChef Bennett</Highlight> as Finance
-            Sub-Head, which is mostly spreadsheets and sponsor emails, not code.
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-cream/70 sm:text-base">
+            Second-year CS at Bennett (
+            <Highlight color="#4C8AE0" dark>
+              9.35 CGPA
+            </Highlight>
+            ), currently interning at{" "}
+            <Highlight color="#4C8AE0" dark>
+              Zyflow
+            </Highlight>{" "}
+            on agentic AI — teaching LLMs to actually finish a task, not just
+            talk about one. I also run the books for{" "}
+            <Highlight color="#E0A24C" dark>
+              CodeChef Bennett
+            </Highlight>{" "}
+            as Finance Sub-Head, which is mostly spreadsheets and sponsor
+            emails, not code.
           </p>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-base">
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-cream/70 sm:text-base">
             Most of what&rsquo;s below started as a hackathon problem
             statement or a course project I refused to stop touching after
             the deadline. If it says &ldquo;in progress,&rdquo; it probably
             still is, right now.
           </p>
-          <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-base">
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-cream/70 sm:text-base">
             Off-screen, I&rsquo;ve played competitive basketball at the{" "}
-            <Highlight color="#6C4FD6">state level</Highlight>. Hold SPACE on
-            the hoop below and try to make the shot.
+            <Highlight color="#9A7CE0" dark>
+              state level
+            </Highlight>
+            . Hold SPACE on the hoop below and try to make the shot.
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -56,15 +77,15 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="rounded-xl border border-line bg-cream-2 p-4"
+                className="rounded-xl border border-cream/15 bg-cream/5 p-4 backdrop-blur-sm"
               >
-                <p className="font-display text-base font-extrabold leading-tight">
+                <p className="font-display text-base font-extrabold leading-tight text-cream">
                   {a.title}
                 </p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-ink-soft">
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-cream/60">
                   {a.org}
                 </p>
-                <p className="mt-1 text-xs text-ink-soft">{a.note}</p>
+                <p className="mt-1 text-xs text-cream/50">{a.note}</p>
               </motion.div>
             ))}
           </div>
@@ -77,7 +98,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="flex flex-col gap-6"
         >
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-xs -rotate-2 rounded-xl border border-line bg-cream-2 p-4 shadow-sm">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-xs -rotate-2 rounded-xl border border-cream/15 bg-cream/5 p-4 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] backdrop-blur-sm">
             <div className="grain relative h-full w-full overflow-hidden rounded-lg bg-ink">
               <div
                 className="absolute inset-0 opacity-90"
@@ -90,7 +111,7 @@ export default function About() {
                 SS
               </span>
             </div>
-            <span className="absolute -right-3 -top-3 rotate-6 rounded-full bg-ink px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-cream">
+            <span className="absolute -right-3 -top-3 rotate-6 rounded-full bg-cream px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-ink">
               est. 2024
             </span>
           </div>

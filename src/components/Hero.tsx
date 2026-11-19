@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import Aurora from "./Aurora";
-import EqualizerBadge from "./EqualizerBadge";
+import HeroScatter from "./HeroScatter";
+import MixerPanel from "./MixerPanel";
 
 export default function Hero() {
   return (
@@ -11,13 +12,21 @@ export default function Hero() {
       className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-5 pb-20 pt-32 text-cream sm:px-10"
     >
       <Aurora />
+      <HeroScatter />
 
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-10">
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-8">
         <div className="flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-[0.2em] text-cream/60">
           <span className="tick pl-3">&nbsp;Builder &amp; CS student</span>
-          <EqualizerBadge />
           <span>( 2026 )</span>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <MixerPanel />
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
           <motion.h1
