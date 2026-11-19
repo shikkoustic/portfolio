@@ -35,15 +35,9 @@ const MAX_TAGS: Record<string, number> = {
   vayu: 3,
 };
 
-export default function Work({ isPreview = false }: { isPreview?: boolean } = {}) {
+export default function Work() {
   return (
-    <section
-      id={isPreview ? undefined : "work"}
-      aria-hidden={isPreview ? true : undefined}
-      className={`border-b border-line bg-cream px-5 py-20 sm:px-10 ${
-        isPreview ? "pointer-events-none select-none" : ""
-      }`}
-    >
+    <section id="work" className="border-b border-line bg-cream px-5 py-20 sm:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10">
           <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
@@ -66,8 +60,8 @@ export default function Work({ isPreview = false }: { isPreview?: boolean } = {}
             return (
               <motion.div
                 key={p.id}
-                initial={isPreview ? false : { opacity: 0, y: 24 }}
-                whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
                 className={`${bySpan[p.id]} group [perspective:1400px]`}
