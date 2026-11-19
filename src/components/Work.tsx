@@ -66,7 +66,11 @@ export default function Work() {
                 transition={{ duration: 0.5, delay: i * 0.07 }}
                 className={`${bySpan[p.id]} group [perspective:1400px]`}
               >
-                <div className="relative h-full min-h-[220px] w-full [transform-style:preserve-3d] transition-transform duration-[650ms] [transition-timing-function:cubic-bezier(.33,.75,.3,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)]">
+                <div
+                  className="relative h-full min-h-[220px] w-full [transform-style:preserve-3d] transition-transform duration-700 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)] will-change-transform"
+                  tabIndex={0}
+                  style={{ transformOrigin: "center center" }}
+                >
                   {/* FRONT */}
                   <a
                     href={p.href}
@@ -128,12 +132,23 @@ export default function Work() {
                     target={target}
                     rel={target ? "noreferrer" : undefined}
                     className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-[28px] p-7 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)]"
-                    style={{ background: p.accent }}
+                    style={{
+                      background: `radial-gradient(130% 110% at 82% 88%, ${p.accent} 0%, ${p.accent}55 32%, #0B0B0C 68%)`,
+                    }}
                   >
+                    {/* depth vignette */}
                     <div
                       aria-hidden
-                      className="absolute inset-0 opacity-70"
-                      style={{ background: "radial-gradient(120% 100% at 85% 100%, rgba(0,0,0,0.45) 0%, transparent 60%)" }}
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          "radial-gradient(80% 70% at 15% 10%, rgba(255,255,255,0.07) 0%, transparent 55%), radial-gradient(100% 80% at 85% 100%, rgba(0,0,0,0.5) 0%, transparent 60%)",
+                      }}
+                    />
+                    {/* ghosted glyph watermark */}
+                    <ProjectGlyph
+                      id={p.id}
+                      className="pointer-events-none absolute -top-6 -left-6 h-40 w-40 text-cream/10 sm:h-48 sm:w-48"
                     />
                     <div className="relative flex items-start justify-between">
                       <h3 className="font-display text-xl font-extrabold leading-tight sm:text-2xl">
@@ -141,7 +156,7 @@ export default function Work() {
                       </h3>
                       <span className="shrink-0 text-lg opacity-80">↗</span>
                     </div>
-                    <p className="relative max-w-md text-xs leading-relaxed text-cream/95 sm:text-sm">
+                    <p className={`relative max-w-md text-xs leading-relaxed text-cream/95 sm:text-sm ${VCOMPACT.has(p.id) ? "line-clamp-3" : "line-clamp-5"}`}>
                       {p.longDescription}
                     </p>
                     <div className="relative flex flex-wrap items-center justify-between gap-2">
