@@ -5,27 +5,35 @@ import { projects } from "@/data/projects";
 import { ProjectGlyph } from "./ProjectGlyph";
 import { TiltCard } from "./TiltCard";
 
+// Explicit placement, not source-order auto-placement: the implicit grid put
+// Examen+Vayu under BaseCase in a new row (auto-placement never backtracks
+// into a column it already passed), leaving a gap under CricLens instead of
+// the symmetric two-column block that was actually wanted. Explicit
+// col-start/row-start removes the ambiguity entirely.
+//   Row 1-2, col 1-2: BaseCase (big square)
+//   Row 1,   col 3-4: CricLens
+//   Row 2,   col 3-4: Vayu — stretches full width, ends flush with CricLens
+//   Row 3,   col 1-2: ResumeForge
+//   Row 3,   col 3-4: Examen
 const bySpan: Record<string, string> = {
-  basecase: "sm:col-span-2 sm:row-span-2",
-  criclens: "sm:col-span-2 sm:row-span-1",
-  resumeforge: "sm:col-span-1 sm:row-span-1",
-  examen: "sm:col-span-1 sm:row-span-1",
-  vayu: "sm:col-span-1 sm:row-span-1",
+  basecase: "sm:col-start-1 sm:col-span-2 sm:row-start-1 sm:row-span-2",
+  criclens: "sm:col-start-3 sm:col-span-2 sm:row-start-1 sm:row-span-1",
+  vayu: "sm:col-start-3 sm:col-span-2 sm:row-start-2 sm:row-span-1",
+  resumeforge: "sm:col-start-1 sm:col-span-2 sm:row-start-3 sm:row-span-1",
+  examen: "sm:col-start-3 sm:col-span-2 sm:row-start-3 sm:row-span-1",
 };
 
 // Every card except BaseCase (the only row-span-2 tile) has just 220px of
 // height to work with, so they all need the same compact vertical rhythm —
 // one-line description, a trimmed tag count — or the tags get crammed
-// against the bottom edge. Title size still follows column width (wide
-// 2-col cards can afford a bigger title than 1-col ones).
-const WIDE_TITLE = new Set(["basecase", "criclens"]);
+// against the bottom edge.
 const VCOMPACT = new Set(["criclens", "resumeforge", "examen", "vayu"]);
 const MAX_TAGS: Record<string, number> = {
   basecase: 4,
   criclens: 3,
-  resumeforge: 2,
-  examen: 2,
-  vayu: 2,
+  resumeforge: 3,
+  examen: 3,
+  vayu: 3,
 };
 
 export default function Work() {
@@ -64,9 +72,7 @@ export default function Work() {
                 />
                 <ProjectGlyph
                   id={p.id}
-                  className={`pointer-events-none absolute -bottom-8 -right-8 text-cream/15 ${
-                    WIDE_TITLE.has(p.id) ? "h-48 w-48 sm:h-56 sm:w-56" : "h-28 w-28"
-                  }`}
+                  className="pointer-events-none absolute -bottom-8 -right-8 h-40 w-40 text-cream/15 sm:h-48 sm:w-48"
                 />
 
                 <div className="relative flex items-start justify-between">
@@ -79,11 +85,7 @@ export default function Work() {
                 </div>
 
                 <div className="relative">
-                  <h3
-                    className={`font-display font-extrabold leading-tight drop-shadow-sm ${
-                      WIDE_TITLE.has(p.id) ? "text-3xl sm:text-4xl" : "text-2xl"
-                    }`}
-                  >
+                  <h3 className="font-display text-3xl font-extrabold leading-tight drop-shadow-sm sm:text-4xl">
                     {p.name}
                   </h3>
                   <p className="mt-1 text-xs uppercase tracking-wide text-cream/80 sm:text-sm">

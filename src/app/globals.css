@@ -76,6 +76,16 @@ html.lenis.lenis-smooth {
   display: none;
 }
 
+@keyframes netFlutter {
+  0% { transform: scaleY(1) skewX(0deg); }
+  30% { transform: scaleY(1.18) skewX(-7deg); }
+  60% { transform: scaleY(0.94) skewX(5deg); }
+  100% { transform: scaleY(1) skewX(0deg); }
+}
+.net-flutter {
+  animation: netFlutter 0.55s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
 ::selection {
   background: var(--ink);
   color: var(--cream);

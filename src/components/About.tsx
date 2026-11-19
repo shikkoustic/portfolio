@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { accolades } from "@/data/accolades";
-import BasketballSwish from "./BasketballSwish";
+import BasketballGame from "./BasketballGame";
 import { Highlight } from "./Highlight";
 
 export default function About() {
@@ -44,8 +44,8 @@ export default function About() {
           </p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-ink-soft sm:text-base">
             Off-screen, I&rsquo;ve played competitive basketball at the{" "}
-            <Highlight color="#6C4FD6">state level</Highlight>. Keep
-            scrolling, there&rsquo;s a hoop below.
+            <Highlight color="#6C4FD6">state level</Highlight>. Hold SPACE on
+            the hoop below and try to make the shot.
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -95,7 +95,7 @@ export default function About() {
             </span>
           </div>
 
-          <BasketballSwish />
+          <BasketballGame />
         </motion.div>
       </div>
     </section>
