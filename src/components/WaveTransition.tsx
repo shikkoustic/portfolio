@@ -17,12 +17,16 @@ import { motion } from "framer-motion";
 // itself actually scrolls into view. The area above the wavy line is left
 // transparent so Hero (painted behind, lower z-index) shows through it
 // until the crest genuinely reaches that point as you scroll.
-const CREST_HEIGHT = 96;
+// 96px was far too thin: a single ordinary mouse-wheel tick (let alone
+// Lenis's eased overshoot) blows straight through it, so the wave never
+// actually gets seen mid-transition — it just reads as "missing". Scaled up
+// to something you can't scroll past in one step.
+const CREST_HEIGHT = 260;
 
 const WAVE_FRAMES = [
-  "M0,36 C120,52 240,16 360,28 C480,40 600,10 720,22 C840,34 960,14 1080,26 C1200,38 1320,18 1440,30 L1440,96 L0,96 Z",
-  "M0,26 C120,14 240,46 360,34 C480,22 600,50 720,38 C840,26 960,46 1080,30 C1200,16 1320,42 1440,24 L1440,96 L0,96 Z",
-  "M0,42 C120,30 240,22 360,40 C480,46 600,20 720,30 C840,42 960,22 1080,36 C1200,46 1320,24 1440,38 L1440,96 L0,96 Z",
+  "M0,140 C120,180 240,100 360,130 C480,160 600,90 720,120 C840,150 960,100 1080,130 C1200,160 1320,110 1440,140 L1440,260 L0,260 Z",
+  "M0,110 C120,80 240,170 360,140 C480,110 600,190 720,150 C840,110 960,180 1080,130 C1200,90 1320,160 1440,110 L1440,260 L0,260 Z",
+  "M0,160 C120,130 240,90 360,150 C480,170 600,100 720,130 C840,160 960,100 1080,150 C1200,170 1320,120 1440,150 L1440,260 L0,260 Z",
 ];
 
 export default function WaveTransition() {

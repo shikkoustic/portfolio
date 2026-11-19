@@ -13,18 +13,30 @@ export default function Home() {
     <>
       <Nav />
       <main className="flex-1">
-        {/* This outer div is what bounds the sticky child's pin range: a
-            sticky element stays stuck for as long as its CONTAINING BLOCK
-            (its parent) is in view, not for its own height. Without this
-            wrapper, `main` itself (the whole page) is that containing
-            block, so Hero would never un-stick and would stay painted over
-            every section below it for the rest of the scroll. */}
-        <div className="relative h-screen">
+        {/* A sticky element only stays visually pinned for as long as its
+            CONTAINING BLOCK (its parent) has "slack" beyond the element's
+            own height — pin duration = parent height - child height. A
+            parent exactly one viewport tall gives zero slack (Hero would
+            unstick instantly), and a parent the size of `main` gives it no
+            end to that slack (Hero never releases, paints over everything
+            below forever). 200vh gives Hero a full extra viewport of
+            genuine pin duration. */}
+        <div className="relative h-[200vh]">
           <div className="sticky top-0 z-0 h-screen overflow-hidden">
             <Hero />
           </div>
         </div>
-        <div className="relative z-10">
+        {/* Work's wrapper normally starts exactly where Hero's 200vh box
+            ends - which is also exactly Hero's unstick point, by
+            construction. That means they'd always be flush, never
+            overlapping: Work would only ever appear right as Hero finishes
+            releasing, so the wave's "see Hero through the transparent gap"
+            effect would never have anything behind it to show. Pulling
+            Work up with a negative margin makes it start rising into the
+            viewport while Hero is still genuinely pinned, giving a real
+            overlap window sized comfortably larger than the wave's own
+            height for the crest to animate across. */}
+        <div className="relative z-10 -mt-[380px]">
           <WaveTransition />
           <Work />
         </div>
