@@ -10,14 +10,14 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line bg-cream px-5 py-6 text-ink sm:px-10"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line bg-[#E7EAF4] px-5 py-6 text-ink sm:px-10"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-70"
+        className="pointer-events-none absolute inset-0 opacity-80"
         style={{
           background:
-            "radial-gradient(55% 45% at 90% 0%, #7B5CE014 0%, transparent 60%), radial-gradient(50% 40% at 0% 100%, #D98A3212 0%, transparent 60%)",
+            "radial-gradient(55% 45% at 90% 0%, #7B5CE026 0%, transparent 60%), radial-gradient(50% 40% at 0% 100%, #3659E31A 0%, transparent 60%)",
         }}
       />
 

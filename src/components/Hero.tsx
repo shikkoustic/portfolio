@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-cream px-5 pb-20 pt-32 text-ink sm:px-10"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-[#E7EAF4] px-5 pb-20 pt-32 text-ink sm:px-10"
     >
       <Aurora />
       <HeroScatter />

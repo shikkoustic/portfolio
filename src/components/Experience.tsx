@@ -17,14 +17,14 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line bg-cream-2 px-5 py-6 sm:px-10"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line bg-[#E7EAF4] px-5 py-6 sm:px-10"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-70"
+        className="pointer-events-none absolute inset-0 opacity-80"
         style={{
           background:
-            "radial-gradient(60% 50% at 85% 0%, #3659E31A 0%, transparent 60%), radial-gradient(55% 45% at 10% 100%, #D98A321A 0%, transparent 60%)",
+            "radial-gradient(60% 50% at 85% 0%, #3659E326 0%, transparent 60%), radial-gradient(55% 45% at 10% 100%, #7B5CE01F 0%, transparent 60%)",
         }}
       />
 
@@ -48,7 +48,7 @@ export default function Experience() {
             >
               <span
                 className="absolute -left-[41px] top-5 h-3.5 w-3.5 rounded-full border-2 sm:-left-[49px]"
-                style={{ background: GRADIENTS[e.role], borderColor: "#E9E6DC" }}
+                style={{ background: GRADIENTS[e.role], borderColor: "#E7EAF4" }}
               />
 
               <motion.div
