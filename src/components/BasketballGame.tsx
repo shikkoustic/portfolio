@@ -204,14 +204,14 @@ export default function BasketballGame() {
       >
         <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="absolute inset-0">
           {/* floor */}
-          <line x1={0} y1={H - 2} x2={W} y2={H - 2} stroke="#D8D0BE" strokeWidth="2" />
+          <line x1={0} y1={H - 2} x2={W} y2={H - 2} stroke="#D9D5C8" strokeWidth="2" />
           {/* pole */}
           <line
             x1={POLE_X}
             y1={H - 2}
             x2={POLE_X}
             y2={H - RIM_Y - 6}
-            stroke="#4A463D"
+            stroke="#565C66"
             strokeWidth="4"
             strokeLinecap="round"
           />
@@ -221,7 +221,7 @@ export default function BasketballGame() {
             y1={H - RIM_Y}
             x2={RIM_BACK_X}
             y2={H - RIM_Y}
-            stroke="#C17A2E"
+            stroke="#D98A32"
             strokeWidth="4"
             strokeLinecap="round"
           />
@@ -238,7 +238,7 @@ export default function BasketballGame() {
                   y1={H - RIM_Y}
                   x2={bottomX}
                   y2={H - NET_BOTTOM_Y}
-                  stroke="#A69C86"
+                  stroke="#8A8F99"
                   strokeWidth="1.4"
                 />
               );
@@ -248,7 +248,7 @@ export default function BasketballGame() {
               y1={H - (RIM_Y + NET_BOTTOM_Y) / 2}
               x2={RIM_BACK_X - 6}
               y2={H - (RIM_Y + NET_BOTTOM_Y) / 2}
-              stroke="#A69C86"
+              stroke="#8A8F99"
               strokeWidth="1"
               opacity="0.7"
             />
@@ -262,7 +262,7 @@ export default function BasketballGame() {
         >
           <div
             ref={meterFillRef}
-            className="absolute bottom-0 h-full w-full origin-bottom rounded-full bg-[#C17A2E]"
+            className="absolute bottom-0 h-full w-full origin-bottom rounded-full bg-[#D98A32]"
             style={{ transform: "scaleY(0)" }}
           />
         </div>
@@ -272,7 +272,7 @@ export default function BasketballGame() {
           ref={ballRef}
           className="absolute bottom-0 left-0 h-4 w-4 rounded-full"
           style={{
-            background: "radial-gradient(circle at 32% 28%, #F0A456 0%, #D9822F 55%, #B2621C 100%)",
+            background: "radial-gradient(circle at 32% 28%, #F0B066 0%, #D98A32 55%, #A8651F 100%)",
             boxShadow: "inset -2px -2px 4px rgba(0,0,0,0.35), inset 1px 1px 2px rgba(255,255,255,0.35)",
           }}
         />

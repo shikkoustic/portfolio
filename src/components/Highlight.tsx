@@ -1,6 +1,6 @@
 export function Highlight({
   children,
-  color = "#2A4FD6",
+  color = "#3659E3",
   dark = false,
 }: {
   children: React.ReactNode;

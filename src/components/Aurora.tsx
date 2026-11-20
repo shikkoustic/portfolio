@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 
 const BLOBS = [
-  { color: "#2A4FD6", size: 520, x: "10%", y: "-10%", dur: 22 },
-  { color: "#6C4FD6", size: 420, x: "70%", y: "0%", dur: 26 },
-  { color: "#C17A2E", size: 460, x: "40%", y: "55%", dur: 20 },
-  { color: "#2F8FB5", size: 380, x: "85%", y: "60%", dur: 24 },
+  { color: "#3659E3", size: 520, x: "10%", y: "-10%", dur: 22 },
+  { color: "#7B5CE0", size: 420, x: "70%", y: "0%", dur: 26 },
+  { color: "#D98A32", size: 460, x: "40%", y: "55%", dur: 20 },
+  { color: "#1E9BB0", size: 380, x: "85%", y: "60%", dur: 24 },
 ];
 
 export default function Aurora() {

@@ -8,9 +8,9 @@ import { experience } from "@/data/experience";
 // University" (Junior Core, then Finance Sub-Head), so org alone isn't a
 // unique key anymore.
 const GRADIENTS: Record<string, string> = {
-  "Software Development Intern": "linear-gradient(115deg, #1C3FB0 0%, #3C7BE0 55%, #7FD4E8 100%)",
-  "Finance Team Sub-Head": "linear-gradient(115deg, #B0511C 0%, #E08A3E 55%, #F2C86B 100%)",
-  "Junior Core Member": "linear-gradient(115deg, #6B4A1C 0%, #9A6E2E 55%, #C9A25C 100%)",
+  "Software Development Intern": "linear-gradient(115deg, #1E3AA8 0%, #3659E3 55%, #8FC7F2 100%)",
+  "Finance Team Sub-Head": "linear-gradient(115deg, #A8651F 0%, #D98A32 55%, #F2C178 100%)",
+  "Junior Core Member": "linear-gradient(115deg, #5C4019 0%, #96702E 55%, #D1AD71 100%)",
 };
 
 export default function Experience() {
@@ -18,14 +18,14 @@ export default function Experience() {
     <section
       id="experience"
       className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line px-5 py-6 sm:px-10"
-      style={{ background: "#1C1712" }}
+      style={{ background: "#0C0E12" }}
     >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-50"
         style={{
           background:
-            "radial-gradient(60% 50% at 85% 0%, #3C7BE022 0%, transparent 60%), radial-gradient(55% 45% at 10% 100%, #E08A3E22 0%, transparent 60%)",
+            "radial-gradient(60% 50% at 85% 0%, #3659E322 0%, transparent 60%), radial-gradient(55% 45% at 10% 100%, #D98A3222 0%, transparent 60%)",
         }}
       />
 
@@ -49,7 +49,7 @@ export default function Experience() {
             >
               <span
                 className="absolute -left-[41px] top-5 h-3.5 w-3.5 rounded-full border-2 sm:-left-[49px]"
-                style={{ background: GRADIENTS[e.role], borderColor: "#1C1712" }}
+                style={{ background: GRADIENTS[e.role], borderColor: "#0C0E12" }}
               />
 
               <motion.div

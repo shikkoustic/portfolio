@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #f3efe6;
-  --cream-2: #eae4d6;
-  --ink: #15130f;
-  --ink-soft: #4a463d;
-  --line: #d8d0be;
+  --cream: #F3F2ED;
+  --cream-2: #E9E6DC;
+  --ink: #0C0E12;
+  --ink-soft: #565C66;
+  --line: #D9D5C8;
 }
 
 @theme inline {

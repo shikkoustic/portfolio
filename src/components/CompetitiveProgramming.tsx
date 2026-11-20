@@ -8,21 +8,21 @@ import GithubHeatmap from "./GithubHeatmap";
 // Front face: accent blooms top-left → near-black
 const FRONT_GRADIENTS: Record<string, string> = {
   LeetCode:
-    "radial-gradient(130% 110% at 20% 10%, #E08A3E 0%, #C17A2E55 32%, #0B0B0C 68%)",
+    "radial-gradient(130% 110% at 20% 10%, #D98A32 0%, #D98A3255 32%, #0C0E12 68%)",
   CodeChef:
-    "radial-gradient(130% 110% at 20% 10%, #8F6CE0 0%, #6C4FD655 32%, #0B0B0C 68%)",
+    "radial-gradient(130% 110% at 20% 10%, #8F6CE0 0%, #7B5CE055 32%, #0C0E12 68%)",
   Codeforces:
-    "radial-gradient(130% 110% at 20% 10%, #4C8A54 0%, #2F523355 32%, #0B0B0C 68%)",
+    "radial-gradient(130% 110% at 20% 10%, #4C8A54 0%, #2F8F6255 32%, #0C0E12 68%)",
 };
 
 // Back face: mirrored bloom with rich depth
 const BACK_GRADIENTS: Record<string, string> = {
   LeetCode:
-    "radial-gradient(130% 110% at 85% 90%, #E08A3E 0%, #C17A2E55 32%, #0B0B0C 68%)",
+    "radial-gradient(130% 110% at 85% 90%, #D98A32 0%, #D98A3255 32%, #0C0E12 68%)",
   CodeChef:
-    "radial-gradient(130% 110% at 85% 90%, #8F6CE0 0%, #6C4FD655 32%, #0B0B0C 68%)",
+    "radial-gradient(130% 110% at 85% 90%, #8F6CE0 0%, #7B5CE055 32%, #0C0E12 68%)",
   Codeforces:
-    "radial-gradient(130% 110% at 85% 90%, #4C8A54 0%, #2F523355 32%, #0B0B0C 68%)",
+    "radial-gradient(130% 110% at 85% 90%, #4C8A54 0%, #2F8F6255 32%, #0C0E12 68%)",
 };
 
 const DEPTH_OVERLAY =
@@ -161,7 +161,7 @@ export default function CompetitiveProgramming() {
                             alt="Knight Badge"
                             className="h-7 w-7 object-contain drop-shadow"
                           />
-                          <span className="font-display text-[11px] font-black uppercase tracking-wider text-[#F0A456]">
+                          <span className="font-display text-[11px] font-black uppercase tracking-wider text-[#F0B066]">
                             Knight
                           </span>
                         </div>
@@ -187,7 +187,7 @@ export default function CompetitiveProgramming() {
                           title="Specialist"
                         >
                           <span className="inline-block h-2 w-2 rounded-full bg-[#55FF55] animate-pulse" />
-                          <span className="font-display text-[11px] font-black uppercase tracking-wider text-[#7FD4E8]">
+                          <span className="font-display text-[11px] font-black uppercase tracking-wider text-[#8FC7F2]">
                             Specialist
                           </span>
                         </div>
@@ -314,7 +314,7 @@ export default function CompetitiveProgramming() {
                             </span>
                           </div>
                           <div>
-                            <p className="font-display text-xl font-extrabold uppercase text-[#7FD4E8]">
+                            <p className="font-display text-xl font-extrabold uppercase text-[#8FC7F2]">
                               Specialist
                             </p>
                             <p className="mt-0.5 text-xs text-cream/70">

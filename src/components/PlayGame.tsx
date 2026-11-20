@@ -8,14 +8,14 @@ export default function PlayGame() {
   return (
     <section
       className="relative flex h-full flex-col items-center justify-center gap-5 overflow-hidden px-5 py-6 text-cream sm:px-10"
-      style={{ background: "#13201C" }}
+      style={{ background: "#0C0E12" }}
     >
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-60"
         style={{
           background:
-            "radial-gradient(55% 45% at 90% 0%, #6C4FD622 0%, transparent 60%), radial-gradient(50% 40% at 0% 100%, #C17A2E1E 0%, transparent 60%)",
+            "radial-gradient(55% 45% at 90% 0%, #7B5CE022 0%, transparent 60%), radial-gradient(50% 40% at 0% 100%, #D98A321E 0%, transparent 60%)",
         }}
       />
 

@@ -31,7 +31,7 @@ export default function Home() {
               className="pointer-events-none absolute bottom-full left-0 right-0 w-full overflow-hidden select-none"
               style={{ height: 240, marginBottom: -1 }}
             >
-              <WaveEdge fill="#f3efe6" />
+              <WaveEdge fill="#F3F2ED" />
             </div>
 
             <Work />

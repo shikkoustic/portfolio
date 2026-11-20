@@ -85,8 +85,8 @@ export default function MixerPanel() {
           />
           <defs>
             <linearGradient id="spikeGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#F0A456" />
-              <stop offset="100%" stopColor="#C17A2E" />
+              <stop offset="0%" stopColor="#F0B066" />
+              <stop offset="100%" stopColor="#D98A32" />
             </linearGradient>
           </defs>
           {Array.from({ length: SPIKE_COUNT }).map((_, i) => (

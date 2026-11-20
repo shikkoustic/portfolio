@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import activity from "@/data/github-activity.json";
 
-const LEVEL_COLOR = ["#15130F0D", "#2A4FD655", "#2A4FD688", "#2A4FD6BB", "#2A4FD6"];
+const LEVEL_COLOR = ["#0C0E120D", "#3659E355", "#3659E388", "#3659E3BB", "#3659E3"];
 
 // Real total from github.com/shikkoustic's contribution graph (levels are a 0-4
 // bucketed intensity, not a count, so they can't be summed for the real total).

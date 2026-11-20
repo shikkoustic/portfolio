@@ -16,7 +16,7 @@ export const experience: Experience[] = [
       "Agentic AI systems — memory, tools, orchestration.",
       "Conversational & voice AI on top of LLMs.",
     ],
-    accent: "#2A4FD6",
+    accent: "#3659E3",
     logo: "/logos/zyflow.png",
   },
   {
@@ -24,7 +24,7 @@ export const experience: Experience[] = [
     org: "CodeChef Bennett University",
     period: "Aug 2025 — May 2026",
     points: ["Assisted in 6 events."],
-    accent: "#C17A2E",
+    accent: "#D98A32",
     logo: "/logos/codechef.svg",
   },
   {
@@ -32,7 +32,7 @@ export const experience: Experience[] = [
     org: "CodeChef Bennett University",
     period: "Sept 2024 — Aug 2025",
     points: ["Assisted in 7 events."],
-    accent: "#8F6A3E",
+    accent: "#96702E",
     logo: "/logos/codechef.svg",
   },
 ];

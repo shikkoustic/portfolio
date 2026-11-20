@@ -28,7 +28,7 @@ export const cpPlatforms: CPPlatform[] = [
     ratingLabel: "peak contest rating",
     stat: "741",
     statLabel: "problems solved · top 3.31%",
-    accent: "#C17A2E",
+    accent: "#D98A32",
     href: "https://leetcode.com/u/shikkoustic/",
     featuredBadge: {
       name: "Knight",
@@ -83,7 +83,7 @@ export const cpPlatforms: CPPlatform[] = [
     ratingLabel: "highest rating",
     stat: "169",
     statLabel: "problems solved · 13 rated contests",
-    accent: "#6C4FD6",
+    accent: "#7B5CE0",
     href: "https://www.codechef.com/users/shikkoustic",
     featuredBadge: {
       name: "3 Star",
@@ -120,7 +120,7 @@ export const cpPlatforms: CPPlatform[] = [
     ratingLabel: "max rating",
     stat: "10+",
     statLabel: "rated contests",
-    accent: "#2F5233",
+    accent: "#2F8F62",
     href: "https://codeforces.com/profile/shikkoustic",
     featuredBadge: {
       name: "Specialist",

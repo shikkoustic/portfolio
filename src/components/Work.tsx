@@ -67,7 +67,7 @@ export default function Work() {
                     <div
                       className="absolute inset-0"
                       style={{
-                        background: `radial-gradient(130% 110% at 18% 12%, ${p.accent} 0%, ${p.accent}55 32%, #0B0B0C 68%)`,
+                        background: `radial-gradient(130% 110% at 18% 12%, ${p.accent} 0%, ${p.accent}55 32%, #0C0E12 68%)`,
                       }}
                     />
                     <ProjectGlyph
@@ -117,7 +117,7 @@ export default function Work() {
                     href={caseStudyHref}
                     className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-2xl p-4 text-cream shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] [transform:rotateY(180deg)] sm:p-5"
                     style={{
-                      background: `radial-gradient(130% 110% at 82% 88%, ${p.accent} 0%, ${p.accent}55 32%, #0B0B0C 68%)`,
+                      background: `radial-gradient(130% 110% at 82% 88%, ${p.accent} 0%, ${p.accent}55 32%, #0C0E12 68%)`,
                     }}
                   >
                     {/* depth vignette */}
