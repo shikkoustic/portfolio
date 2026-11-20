@@ -9,13 +9,13 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-ink px-5 pb-20 pt-32 text-cream sm:px-10"
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-cream px-5 pb-20 pt-32 text-ink sm:px-10"
     >
       <Aurora />
       <HeroScatter />
 
       <div className="relative mx-auto flex max-w-6xl flex-col gap-8">
-        <div className="flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-[0.2em] text-cream/60">
+        <div className="flex flex-wrap items-center justify-between gap-3 text-xs uppercase tracking-[0.2em] text-ink-soft">
           <span className="tick pl-3">&nbsp;Builder &amp; CS student</span>
           <span>( 2026 )</span>
         </div>
@@ -41,7 +41,7 @@ export default function Hero() {
             <br />
             <span className="inline-flex items-center gap-3">
               Ship it.
-              <span className="font-display text-2xl font-extrabold text-cream/60 sm:text-4xl">
+              <span className="font-display text-2xl font-extrabold text-ink-soft sm:text-4xl">
                 ✺
               </span>
             </span>
@@ -53,7 +53,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
             className="flex flex-col gap-6"
           >
-            <p className="max-w-sm text-sm leading-relaxed text-cream/75 sm:text-base">
+            <p className="max-w-sm text-sm leading-relaxed text-ink-soft sm:text-base">
               I&rsquo;m Shikhar — B.Tech CSE at Bennett University. I build
               computer-vision, ML, and full-stack products end to end: data,
               model, interface, deploy. { "{ "}mostly shipped, occasionally still cooking
@@ -63,7 +63,7 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="#work"
-                className="rounded-full bg-cream px-6 py-3 text-xs font-bold uppercase tracking-wide text-ink transition hover:-translate-y-0.5 hover:shadow-lg"
+                className="rounded-full bg-ink px-6 py-3 text-xs font-bold uppercase tracking-wide text-cream transition hover:-translate-y-0.5 hover:shadow-lg"
               >
                 View my work
               </a>
@@ -71,7 +71,7 @@ export default function Hero() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-cream/40 px-6 py-3 text-xs font-bold uppercase tracking-wide text-cream transition hover:bg-cream hover:text-ink"
+                className="rounded-full border border-ink/25 px-6 py-3 text-xs font-bold uppercase tracking-wide text-ink transition hover:bg-ink hover:text-cream"
               >
                 Resume ↗
               </a>
@@ -82,14 +82,14 @@ export default function Hero() {
 
       <span
         aria-hidden
-        className="font-display pointer-events-none absolute -bottom-10 right-0 select-none text-[28vw] font-black leading-none text-cream/[0.045]"
+        className="font-display pointer-events-none absolute -bottom-10 right-0 select-none text-[28vw] font-black leading-none text-ink/[0.04]"
       >
         SS
       </span>
 
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-cream/50"
+        className="pointer-events-none absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-ink-soft"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
       >

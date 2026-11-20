@@ -73,15 +73,15 @@ export default function MixerPanel() {
   };
 
   return (
-    <div className="flex w-full max-w-xl items-center gap-5 rounded-2xl border border-cream/15 bg-black/20 px-4 py-3 backdrop-blur-sm sm:px-5">
+    <div className="flex w-full max-w-xl items-center gap-5 rounded-2xl border border-ink/10 bg-ink/[0.03] px-4 py-3 backdrop-blur-sm sm:px-5">
       <div className="relative h-[108px] w-[108px] shrink-0 sm:h-[128px] sm:w-[128px]">
         <svg viewBox={`0 0 ${SIZE} ${SIZE}`} className="h-full w-full">
           <circle
             cx={CENTER}
             cy={CENTER}
             r={BASE_R - 10}
-            fill="rgba(0,0,0,0.3)"
-            stroke="rgba(255,255,255,0.12)"
+            fill="rgba(12,14,18,0.04)"
+            stroke="rgba(12,14,18,0.12)"
           />
           <defs>
             <linearGradient id="spikeGradient" x1="0" y1="0" x2="0" y2="1">
@@ -108,7 +108,7 @@ export default function MixerPanel() {
         <button
           onClick={toggle}
           aria-label={playing ? "Pause" : "Play"}
-          className="absolute inset-0 m-auto flex h-9 w-9 items-center justify-center rounded-full bg-cream text-ink transition hover:scale-105 sm:h-10 sm:w-10"
+          className="absolute inset-0 m-auto flex h-9 w-9 items-center justify-center rounded-full bg-ink text-cream transition hover:scale-105 sm:h-10 sm:w-10"
         >
           {playing ? (
             <svg width="12" height="12" viewBox="0 0 14 14" fill="currentColor">
@@ -124,10 +124,10 @@ export default function MixerPanel() {
       </div>
 
       <div className="flex flex-col">
-        <span className="text-[11px] font-bold uppercase tracking-wide text-cream">
+        <span className="text-[11px] font-bold uppercase tracking-wide text-ink">
           {TRACK_LABEL}
         </span>
-        <span className="text-[10px] uppercase tracking-wide text-cream/50">
+        <span className="text-[10px] uppercase tracking-wide text-ink-soft">
           now playing
         </span>
       </div>

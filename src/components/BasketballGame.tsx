@@ -278,9 +278,9 @@ export default function BasketballGame() {
         />
       </div>
 
-      <div className="flex items-center gap-4 text-xs text-cream/70">
+      <div className="flex items-center gap-4 text-xs text-ink-soft">
         <span className="min-w-[180px] text-center font-semibold">{message}</span>
-        <span className="font-display font-bold text-cream">
+        <span className="font-display font-bold text-ink">
           {stats.makes}/{stats.attempts}
         </span>
       </div>

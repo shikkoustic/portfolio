@@ -66,7 +66,7 @@ export default function HeroScatter() {
       {ICONS.map((icon) => (
         <motion.div
           key={icon.id}
-          className="absolute text-cream/[0.14]"
+          className="absolute text-ink/[0.08]"
           style={{ left: icon.left, top: icon.top, width: icon.size, height: icon.size }}
           initial={{ opacity: 0, rotate: icon.rot - 6, y: 10 }}
           animate={{ opacity: 1, rotate: icon.rot, y: [0, -10, 0] }}

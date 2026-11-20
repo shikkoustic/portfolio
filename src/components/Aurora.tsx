@@ -22,8 +22,8 @@ export default function Aurora() {
             width: b.size,
             height: b.size,
             background: b.color,
-            opacity: 0.45,
-            filter: "blur(90px)",
+            opacity: 0.22,
+            filter: "blur(110px)",
           }}
           animate={{
             x: [0, 40, -30, 0],
@@ -36,7 +36,7 @@ export default function Aurora() {
           }}
         />
       ))}
-      <div className="absolute inset-0 bg-ink/40" />
+      <div className="absolute inset-0 bg-cream/55" />
     </div>
   );
 }

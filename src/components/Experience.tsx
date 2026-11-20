@@ -17,27 +17,26 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line px-5 py-6 sm:px-10"
-      style={{ background: "#0C0E12" }}
+      className="relative flex min-h-screen flex-col justify-center overflow-hidden border-b border-line bg-cream-2 px-5 py-6 sm:px-10"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-50"
+        className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            "radial-gradient(60% 50% at 85% 0%, #3659E322 0%, transparent 60%), radial-gradient(55% 45% at 10% 100%, #D98A3222 0%, transparent 60%)",
+            "radial-gradient(60% 50% at 85% 0%, #3659E31A 0%, transparent 60%), radial-gradient(55% 45% at 10% 100%, #D98A321A 0%, transparent 60%)",
         }}
       />
 
       <div className="relative mx-auto w-full max-w-4xl">
-        <span className="text-xs uppercase tracking-[0.2em] text-cream/50">
+        <span className="text-xs uppercase tracking-[0.2em] text-ink-soft">
           ( Experience )
         </span>
-        <h2 className="font-display mt-1 text-2xl font-extrabold uppercase tracking-tight text-cream sm:text-3xl">
+        <h2 className="font-display mt-1 text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl">
           Outside the IDE
         </h2>
 
-        <div className="relative mt-4 flex flex-col gap-3 border-l border-cream/15 pl-8 sm:mt-5 sm:gap-3.5 sm:pl-10">
+        <div className="relative mt-4 flex flex-col gap-3 border-l border-ink/15 pl-8 sm:mt-5 sm:gap-3.5 sm:pl-10">
           {experience.map((e, i) => (
             <motion.div
               key={e.role}
@@ -49,7 +48,7 @@ export default function Experience() {
             >
               <span
                 className="absolute -left-[41px] top-5 h-3.5 w-3.5 rounded-full border-2 sm:-left-[49px]"
-                style={{ background: GRADIENTS[e.role], borderColor: "#0C0E12" }}
+                style={{ background: GRADIENTS[e.role], borderColor: "#E9E6DC" }}
               />
 
               <motion.div
@@ -81,7 +80,7 @@ export default function Experience() {
                 </div>
               </motion.div>
 
-              <ul className="mt-1.5 flex flex-col gap-0.5 text-[11px] text-cream/60 sm:text-xs">
+              <ul className="mt-1.5 flex flex-col gap-0.5 text-[11px] text-ink-soft sm:text-xs">
                 {e.points.map((pt) => (
                   <li key={pt}>{pt}</li>
                 ))}
